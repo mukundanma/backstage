@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: all-api-collections
+  description: Central registry of all Postman collections
+spec:
+  type: dir
+  targets:
+    - ./artifact-service/catalog-info.yaml
+    - ./auth-service/catalog-info.yaml
+    - ./llm-inference/catalog-info.yaml
+    - ./llm-orch-service/catalog-info.yaml
+    - ./nlp-service/catalog-info.yaml
