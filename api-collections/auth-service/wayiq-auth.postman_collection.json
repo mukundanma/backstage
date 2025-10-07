@@ -1,0 +1,846 @@
+{
+	"info": {
+		"_postman_id": "011de3b6-8aef-49bb-992b-ddda7f9f9053",
+		"name": "LLM-Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43448221"
+	},
+	"item": [
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-dev-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-auth-url}}/health",
+					"host": [
+						"{{base-auth-url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-auth-url}}/health",
+							"host": [
+								"{{base-auth-url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 30 May 2025 06:28:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "4"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "10"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "80"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "1666f36c7b479f4996694968749c2a54"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"displayMessage\": \"Auth service is up and running\",\n    \"internalErrorMessage\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-dev-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-auth-url}}/authenticate",
+					"host": [
+						"{{base-auth-url}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "authenticate",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-auth-url}}/authenticate",
+							"host": [
+								"{{base-auth-url}}"
+							],
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 30 May 2025 06:30:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "4"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "9"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "61"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "ff834e5f8dcd8174352b563254028007"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"accountId\": \"57\",\n    \"userId\": \"120\",\n    \"emailId\": \"hariprasath.t@purpleslate.in\",\n    \"userName\": \"Hari Prasath T 123\"\n}"
+				}
+			]
+		},
+		{
+			"name": "user/validate_token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-dev-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJ3YXlpcXN1YnNjcmlwdGlvbi50ZXN0MDYwQHB1cnBsZXNjYXBlLmNvbVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6ODU5fV0sXCJlbWFpbElkXCI6XCJnb2t1bHJhbS5rQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTk2MjYxMDUxOTZcIixcInNlc3Npb25JZFwiOlwiNTVkNzNhN2YtYTA0Yi00YjZiLWJlYzctOWEyNWIzZTFkYjI3XCIsXCJ1c2VySWRcIjoxMTQ2LFwidGVuYW50TmFtZVwiOlwid2F5aXFzdWJzY3JpcHRpb24udGVzdDA2MEBwdXJwbGVzY2FwZS5jb21cIixcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6ODU5LFwibmFtZVwiOlwiR29rdWxyYW0gS1wiLFwic29jaWFsUmVnXCI6ZmFsc2UsXCJjaGFubmVsTmFtZVwiOlwibW9iaWxlXCJ9IiwiZXhwIjoxNzU4MDk3NDg1LCJpc3MiOiJTYUJFTXBjWG5NV0tCQW1lTDNaZVZ3VTlsTUpSelVEYyJ9.IfIuwkj_L6-s4NTsdeyJEywDxnMLSOvLwLh2Xq_ZUVw\",\r\n  \"userId\": \"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-auth-url}}/user/validate_token",
+					"host": [
+						"{{base-auth-url}}"
+					],
+					"path": [
+						"user",
+						"validate_token"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "user/validate_token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJiYWxhamkuckBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiS2VhXCIsXCJpbWFnZVVybFwiOlwiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUdObXl4YVh6QWFtbkpBalpObzJjam0zdDFiaFZrNXhkSG16OGNUaTIwSGM9czk2LWNcIixcInRlbmFudElkXCI6MixcIm5hbWVcIjpcIlZpamF5YXJhaGF2YW4gS1wiLFwic29jaWFsUmVnXCI6dHJ1ZSxcImVtYWlsSWRcIjpcInZpamF5YXJhaGF2YW4ua0BwdXJwbGVzbGF0ZS5pblwiLFwidXNlcklkXCI6NX0iLCJleHAiOjE2ODAyMDUxMDEsImlzcyI6IlQxOEhNbVVzZVhDNEJUQ0lzS09WVUhMTGkzRzh3YlhiIn0.y8LioVwyAn7T17Uy6I2Fmp26Kz5wKRfXIcH0nvGX4eY\",\r\n  \"userId\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-auth-url}}/user/validate_token",
+							"host": [
+								"{{base-auth-url}}"
+							],
+							"path": [
+								"user",
+								"validate_token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJiYWxhamkuckBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiS2VhXCIsXCJpbWFnZVVybFwiOlwiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUdObXl4YVh6QWFtbkpBalpObzJjam0zdDFiaFZrNXhkSG16OGNUaTIwSGM9czk2LWNcIixcInRlbmFudElkXCI6MixcIm5hbWVcIjpcIlZpamF5YXJhaGF2YW4gS1wiLFwic29jaWFsUmVnXCI6dHJ1ZSxcImVtYWlsSWRcIjpcInZpamF5YXJhaGF2YW4ua0BwdXJwbGVzbGF0ZS5pblwiLFwidXNlcklkXCI6NX0iLCJleHAiOjE2ODAyMDUxMDEsImlzcyI6IlQxOEhNbVVzZVhDNEJUQ0lzS09WVUhMTGkzRzh3YlhiIn0.y8LioVwyAn7T17Uy6I2Fmp26Kz5wKRfXIcH0nvGX4eY\",\n    \"userId\": \"5\"\n}"
+				}
+			]
+		},
+		{
+			"name": "user/biometric/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					},
+					{
+						"key": "accountId",
+						"value": "859",
+						"type": "text"
+					},
+					{
+						"key": "accountid",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "userId",
+						"value": "1146",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "emaild",
+						"value": "gokulram.k@purplescape.com",
+						"type": "text"
+					},
+					{
+						"key": "emailid",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "userName",
+						"value": "Gokulram K",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{base-auth-url}}/user/biometric/create",
+					"host": [
+						"{{base-auth-url}}"
+					],
+					"path": [
+						"user",
+						"biometric",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "user/biometric/create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-auth-url}}/user/biometric/create",
+							"host": [
+								"{{base-auth-url}}"
+							],
+							"path": [
+								"user",
+								"biometric",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "user/biometric/delete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-dev-token}}",
+						"type": "text"
+					},
+					{
+						"key": "accountId",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "accountid",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "emaild",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "emailid",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "userName",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-auth-url}}/user/biometric/delete",
+					"host": [
+						"{{base-auth-url}}"
+					],
+					"path": [
+						"user",
+						"biometric",
+						"delete"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "user/biometric/create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-auth-url}}/user/biometric/delete",
+							"host": [
+								"{{base-auth-url}}"
+							],
+							"path": [
+								"user",
+								"biometric",
+								"delete"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "user/biometric/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-dev-token}}",
+						"type": "text"
+					},
+					{
+						"key": "accountId",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "accountid",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "emaild",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "emailid",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "userName",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-auth-url}}/user/biometric/login",
+					"host": [
+						"{{base-auth-url}}"
+					],
+					"path": [
+						"user",
+						"biometric",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "user/biometric/login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-auth-url}}/user/biometric/login",
+							"host": [
+								"{{base-auth-url}}"
+							],
+							"path": [
+								"user",
+								"biometric",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "user/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-dev-token}}",
+						"type": "text"
+					},
+					{
+						"key": "accountId",
+						"value": "859",
+						"type": "text"
+					},
+					{
+						"key": "accountid",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "userId",
+						"value": "1146",
+						"type": "text"
+					},
+					{
+						"key": "userid",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "emaild",
+						"value": "gokulram.k@purplescape.com",
+						"type": "text"
+					},
+					{
+						"key": "emailid",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "userName",
+						"value": "Gokulram K",
+						"type": "text"
+					},
+					{
+						"key": "username",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{base-auth-url}}/user/create",
+					"host": [
+						"{{base-auth-url}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "user/create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-auth-url}}/user/create",
+							"host": [
+								"{{base-auth-url}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": ""
+				}
+			]
+		}
+	]
+}

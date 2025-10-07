@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: user-service-api
+  description: User Service APIs
+  tags:
+    - postman
+    - internal
+spec:
+  type: openapi
+  lifecycle: production
+  owner: team-user
+  system: core-platform
+  definition:
+    $text: ./wayiq-llm-inference.postman_collection.json

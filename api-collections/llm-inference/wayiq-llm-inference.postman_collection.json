@@ -1,0 +1,976 @@
+{
+	"info": {
+		"_postman_id": "ff135fac-6639-41cb-917c-f09c72cad19c",
+		"name": "LLM Inference Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43448221"
+	},
+	"item": [
+		{
+			"name": "Inference health",
+			"item": [
+				{
+					"name": "health",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-infer-url}}/health",
+							"host": [
+								"{{base-infer-url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-infer-url}}/health",
+									"host": [
+										"{{base-infer-url}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 28 May 2025 10:15:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-request-id",
+									"value": "efdb0c37-58f6-4a12-9293-94d02bb6f9a1"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "2"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "5"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "57"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "bccad55e9e392a6532b7e50afb4fc020"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"health\": \"ok\",\n    \"displayMessage\": \"Services are up\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inference test router",
+			"item": [
+				{
+					"name": "summarize",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Check top-level fields exist\r",
+									"[\"question\", \"answer\", \"similarity_score\", \"source_urls\"].forEach(field => {\r",
+									"    pm.test(`Field '${field}' exists`, function () {\r",
+									"        pm.expect(jsonData).to.have.property(field);\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'question' is a non-empty string\r",
+									"pm.test(\"Question is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.question).to.be.a(\"string\").and.not.empty;\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'answer' is a non-empty string\r",
+									"pm.test(\"Answer is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.answer).to.be.a(\"string\").and.not.empty;\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'similarity_score' is a number between 0 and 1\r",
+									"pm.test(\"Similarity score is a number between 0 and 1\", function () {\r",
+									"    pm.expect(jsonData.similarity_score).to.be.a(\"number\").within(0, 1);\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'source_urls' is a non-empty array of valid URLs\r",
+									"pm.test(\"Source URLs is a non-empty array of valid URLs\", function () {\r",
+									"    pm.expect(jsonData.source_urls).to.be.an(\"array\").that.is.not.empty;\r",
+									"    jsonData.source_urls.forEach((url, index) => {\r",
+									"        pm.test(`Source URL [${index}] is valid`, function () {\r",
+									"            pm.expect(url).to.match(/^https?:\\/\\/[\\w\\-\\.]+\\.\\w{2,}(\\/\\S*)?$/);\r",
+									"        });\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"The User Query Consistency Validation task ensures that system responses remain stable, accurate, and predictable across a wide range of user inputs. It involves testing multiple user queries to verify that the API or processing engine returns outputs that match predefined expectations. Each response is checked for consistency in structure, key fields, and values. This helps identify unexpected variations, regressions, or broken mappings. The task uses a dataset of user queries and their corresponding expected outputs, typically in JSON format. By automating this validation in Postman or via Newman, each query is run and evaluated dynamically. Results are logged clearly, highlighting mismatches or inconsistencies. This task is critical for maintaining trust in user-facing systems, especially in NLP, search, or recommendation workflows. It also supports scalable QA by enabling repeated runs with minimal manual effort. Ultimately, it ensures that query responses remain logically and structurally consistent over time\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-infer-url}}/summarize-text",
+							"host": [
+								"{{base-infer-url}}"
+							],
+							"path": [
+								"summarize-text"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "summarize",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"text\": \"The User Query Consistency Validation task ensures that system responses remain stable, accurate, and predictable across a wide range of user inputs. It involves testing multiple user queries to verify that the API or processing engine returns outputs that match predefined expectations. Each response is checked for consistency in structure, key fields, and values. This helps identify unexpected variations, regressions, or broken mappings. The task uses a dataset of user queries and their corresponding expected outputs, typically in JSON format. By automating this validation in Postman or via Newman, each query is run and evaluated dynamically. Results are logged clearly, highlighting mismatches or inconsistencies. This task is critical for maintaining trust in user-facing systems, especially in NLP, search, or recommendation workflows. It also supports scalable QA by enabling repeated runs with minimal manual effort. Ultimately, it ensures that query responses remain logically and structurally consistent over time\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-infer-url}}/summarize-text",
+									"host": [
+										"{{base-infer-url}}"
+									],
+									"path": [
+										"summarize-text"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 27 Jun 2025 06:56:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "2509"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "2512"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "64"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "0c7b750fbdaefd429ae7b16dfe5ff46f"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"summary\": \"The User Query Consistency Validation task ensures that system responses are stable, accurate, and predictable across various user inputs by testing multiple queries against predefined expectations. It checks each response for consistency in structure, key fields, and values, helping to identify unexpected variations or regressions. By automating this process using tools like Postman or Newman, results are logged to highlight any inconsistencies, which is crucial for maintaining trust in user-facing systems, particularly in NLP, search, or recommendation workflows. This approach also facilitates scalable quality assurance with minimal manual effort.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve-db",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Status code check\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Required fields exist\r",
+									"pm.test(\"Response has required fields\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"question\");\r",
+									"    pm.expect(jsonData).to.have.property(\"top_results\");\r",
+									"});\r",
+									"\r",
+									"// ✅ 'question' field checks\r",
+									"pm.test(\"'question' is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.question).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.question.trim().length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ 'top_results' field checks\r",
+									"pm.test(\"'top_results' is a number\", function () {\r",
+									"    pm.expect(jsonData.top_results).to.be.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"// ✅ 'top_results' is non-negative\r",
+									"pm.test(\"'top_results' is non-negative\", function () {\r",
+									"    pm.expect(jsonData.top_results).to.be.at.least(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ Optional: boundary check for top_results (example: should not exceed 100)\r",
+									"pm.test(\"'top_results' does not exceed limit\", function () {\r",
+									"    pm.expect(jsonData.top_results).to.be.below(101); \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\": \"string\",\r\n  \"top_results\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-infer-url}}/retrieve-db",
+							"host": [
+								"{{base-infer-url}}"
+							],
+							"path": [
+								"retrieve-db"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "retrieve-db",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"question\": \"string\",\r\n  \"top_results\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-infer-url}}/retrieve-db",
+									"host": [
+										"{{base-infer-url}}"
+									],
+									"path": [
+										"retrieve-db"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "[\n    {\n        \"_id\": \"64d...\",\n        \"text\": \"Relevant information from the database\",\n        \"source\": \"internal_document\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Query cache",
+			"item": [
+				{
+					"name": "query-cache/search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Status code check\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Required fields exist\r",
+									"pm.test(\"Response has required fields\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"question\");\r",
+									"    pm.expect(jsonData).to.have.property(\"top_results\");\r",
+									"});\r",
+									"\r",
+									"// ✅ 'question' field checks\r",
+									"pm.test(\"'question' is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.question).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.question.trim().length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ 'top_results' field checks\r",
+									"pm.test(\"'top_results' is a number\", function () {\r",
+									"    pm.expect(jsonData.top_results).to.be.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"// ✅ 'top_results' is non-negative\r",
+									"pm.test(\"'top_results' is non-negative\", function () {\r",
+									"    pm.expect(jsonData.top_results).to.be.at.least(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ Optional: boundary check for top_results (example: should not exceed 100)\r",
+									"pm.test(\"'top_results' does not exceed limit\", function () {\r",
+									"    pm.expect(jsonData.top_results).to.be.below(101); \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"string\",\n  \"top_results\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-infer-url}}/query-cache/search",
+							"host": [
+								"{{base-infer-url}}"
+							],
+							"path": [
+								"query-cache",
+								"search"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "query-cache/search",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"query\": \"string\",\n  \"top_results\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-infer-url}}/query-cache/search",
+									"host": [
+										"{{base-infer-url}}"
+									],
+									"path": [
+										"query-cache",
+										"search"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 17 Sep 2025 05:35:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "487"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "498"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "18"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "a0ee1b12bd239147c5fdda1d752a1626"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"query\": \"string\",\n    \"matching_query_text\": null,\n    \"matching_query_id\": null,\n    \"matching_query_type\": null,\n    \"parent_query_id\": 0,\n    \"similarity_score\": 0.27082183957099915,\n    \"search_results\": [\n        [\n            {\n                \"query_id\": 458840110566595391,\n                \"distance\": 0.27082183957099915,\n                \"entity\": {\n                    \"query_text\": \"Properties\",\n                    \"query_type\": \"Structured Data Query\",\n                    \"parent_query_id\": 0,\n                    \"status\": \"ACTIVE\",\n                    \"query_id\": 458840110566595391\n                }\n            },\n            {\n                \"query_id\": 458840110588311104,\n                \"distance\": 0.270821750164032,\n                \"entity\": {\n                    \"query_text\": \"properties\",\n                    \"query_type\": \"Structured Data Query\",\n                    \"parent_query_id\": 0,\n                    \"status\": \"ACTIVE\",\n                    \"query_id\": 458840110588311104\n                }\n            },\n            {\n                \"query_id\": 458840110588310750,\n                \"distance\": 0.270821750164032,\n                \"entity\": {\n                    \"query_text\": \"Properties \",\n                    \"query_type\": \"Structured Data Query\",\n                    \"parent_query_id\": 0,\n                    \"status\": \"ACTIVE\",\n                    \"query_id\": 458840110588310750\n                }\n            }\n        ]\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "save?question=string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Status code check\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Required fields exist\r",
+									"pm.test(\"Response has required fields\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"query\");\r",
+									"    pm.expect(jsonData).to.have.property(\"query_type\");\r",
+									"});\r",
+									"\r",
+									"// ✅ 'query' field checks\r",
+									"pm.test(\"'query' is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.query).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.query.trim().length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ 'query_type' field checks\r",
+									"pm.test(\"'query_type' is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.query_type).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.query_type.trim().length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ Optional: Check that query_type matches expected types (like CRM, NLP, etc.)\r",
+									"pm.test(\"'query_type' is one of the expected types\", function () {\r",
+									"    const allowedTypes = [\"CRM Query\", \"NLP Query\", \"Other\"];\r",
+									"    pm.expect(allowedTypes).to.include(jsonData.query_type);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"Get me all my tasks today \",\r\n    \"query_type\": \"CRM Query\",\r\n    \"parent_query_id\": 0,\r\n    \"status\": \" \"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-infer-url}}/query-cache/save",
+							"host": [
+								"{{base-infer-url}}"
+							],
+							"path": [
+								"query-cache",
+								"save"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "save?question=string",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"query\": \"Get me all my tasks today \",\r\n    \"query_type\": \"CRM Query\",\r\n    \"parent_query_id\": 0,\r\n    \"status\": \" \"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-infer-url}}/query-cache/save",
+									"host": [
+										"{{base-infer-url}}"
+									],
+									"path": [
+										"query-cache",
+										"save"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 17 Sep 2025 05:48:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "3030"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "3034"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "12"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "c545ef0adb214d79f2a4755ed2b95563"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"query_id\": \"460810646578810762\",\n    \"query_type\": \"CRM Query\",\n    \"question\": \"Get me all my tasks today \"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

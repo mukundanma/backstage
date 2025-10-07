@@ -1,0 +1,1686 @@
+{
+	"info": {
+		"_postman_id": "c8d540cc-497f-49ad-998c-29554e22e579",
+		"name": "LLM Orchestration Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43448221"
+	},
+	"item": [
+		{
+			"name": "Filter",
+			"item": [
+				{
+					"name": "Health?detailed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/health/detailed",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"health",
+								"detailed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "load_stable_prompt",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/mlflow/load_stable_prompt?prompt_name=crm_action_prompt&alias=stable",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"mlflow",
+										"load_stable_prompt"
+									],
+									"query": [
+										{
+											"key": "prompt_name",
+											"value": "crm_action_prompt"
+										},
+										{
+											"key": "alias",
+											"value": "stable"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 20 May 2025 09:08:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "1408"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "1411"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "66"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "22d48b37e4b0aa5995dddb6d9cdd700b"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permission-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"prompt\": {\n        \"name\": \"crm_action_prompt\",\n        \"version\": \"9\",\n        \"template\": \"You are an intelligent assistant designed to help manage the day-to-day tasks of an Australian buyer agent for their clients by interacting with the provided task API tools.  Your primary goal is to accurately fulfill the user's requests, avoiding incorrect information and irrelevant data.\\nUse the available tools efficiently and in the right order to understand and fulfill the user's request. Always respond with only the outputs of the tools, formatted clearly.  Present the information in a natural, easily understandable manner for a busy professional. use \\\"casual yet professional\\\" tone and also \\\"suitable emojis\\\" in response.\\n**Crucially, prioritize data accuracy. Scrutinize all dates and filter rigorously.  If the date doesn't *exactly* match the specified criteria (e.g., \\\"today\\\"), exclude that entry.**\\nDo not include any \\\"follow-up task suggestions\\\" or \\\"questions\\\" in your responses. If an error occurs while using a tool, respond politely with a generic error message (e.g., \\\"An error occurred while retrieving the information.\\\") without asking the user to take any corrective action.\\n\\nOnly use the tools listed below. If the user’s request is outside the capabilities of these tools, reply politely that the task cannot be completed.\\nAvailable tools: {{available_tools}}\\n\\nReasoning Process (Chain of Thought):\\n1. **Objective Identification:**  Identify the end goal of the user query and use tools accordingly to gather necessary information.  \\n2. **Tool Selection & Execution:** Select the most appropriate tool to gather the required data. Execute the tool.\\n3. **Data Filtering (Critical):**  *This is the most important step for accuracy.*\\n        * **Current Date:** current date is {{current_time}} (Autralian Time Zone). Use this for all date related conversions or calculations.\\n        * **Date Conversion:** Convert all date-related terms (e.g., \\\"today,\\\" \\\"tomorrow,\\\" \\\"next week\\\") into the *exact* corresponding ISO 8601 date in Australian local time (YYYY-MM-DDTHH:MM:SS).  Always use the Current date mentioned above to calculate the relative date.\\n        * **Strict Date Matching:**  Compare the task's due date *exactly* against the calculated ISO 8601 date.  **If the dates do not match perfectly, discard the entry.**\\n        * **Other Filters:** Apply any other relevant filters (client name, task status, etc.).\\n4. **Client Name Handling:**  Do not try to split the client names at all instances, split only if absolutely necessary.\\n        * If only a single name is provided, treat it as the **first name**. Do **not** ask for the full name.\\n5. For queries involving meetings or schedules, analyze the time expressions (e.g., “last week”, “tomorrow”) and convert them into ISO 8601 format (`YYYY-MM-DDTHH:MM:SS`) before using the `get_meeting_details` tool. \\n7. **Output Formatting (User-Facing Only):**  \\n   Present the *filtered* results clearly and concisely. Use appropriate spacing and line breaks.  \\n   Display datetime values in a human-friendly format: **`MMM DD, YYYY HH:MM`**.  \\n   - **Task Output Fields:** When listing tasks, display the following labels: **Title**, **Description**, **Due Date**, **Status**.  \\n   - **Client Output Fields:** When listing clients, include: **Name**, **Email**, **Phone Number**, **Company Name**.  \\n   - **Meeting Output Fields:** When listing meetings, include: **Title**, **Date**, **Time**, **Invitees**.  \\n   - **Reminder Output Fields:** When listing reminders, include: **Title**, **Description**, **Time**.  \\n   Note: These field labels are for formatting **output only** — do not use them as tool arguments.\\n8. **Error Handling:** If a tool returns an error or no results after filtering, provide a polite, general error message.\\n\\nexamples\\n- Have client name and need client ID? → Use `get_clientid_by_name`.  \\n- Have client ID and need their tasks? → Use `get_all_tasks_for_client`.  \\n- Need client details filtered by multiple criteria? → Use `get_client_by_filter`. \\n- user query is about their day → use `get_meeting_details`\\n\\nuser details: userid={{user_id}}\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "extract-filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Status code check\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Check that required fields exist\r",
+									"pm.test(\"Response has 'userQuery' and 'id' fields\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"userQuery\");\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"// ✅ 'userQuery' field checks\r",
+									"pm.test(\"'userQuery' is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.userQuery).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.userQuery.trim().length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ 'id' field checks\r",
+									"pm.test(\"'id' is a number and non-negative\", function () {\r",
+									"    pm.expect(jsonData.id).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.id).to.be.at.least(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userQuery\": \"Can you show me 2-bedroom apartments (60–80 sqm) in Newtown, Leichhardt, or Balmain with a rental yield above 5%, capital growth over 10% in 5 years, low crime rate, and within 800 meters of public transport and highly-rated public schools?\",\r\n    \"id\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/extract-filters",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"extract-filters"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "extract-filter",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userQuery\": \"hey i'm looking for properties in newtown 2 bedroom apartment with 2 bathrooom, mail me the collection\",\r\n    \"id\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/extract-filters",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"extract-filters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 20 May 2025 09:10:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "9235"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "9240"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "88"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "41933710bef7f2532f318e4783ceba22"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permission-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"filters\": {\n        \"action_filters\": {\n            \"action_filters\": [\n                \"create_collection\"\n            ]\n        },\n        \"domain_filters\": {\n            \"min_bedrooms\": 2,\n            \"max_bedrooms\": 2,\n            \"min_bathrooms\": 2,\n            \"max_bathrooms\": 2,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"ApartmentUnitFlat\"\n            ]\n        },\n        \"htag_filters\": {\n            \"suburb\": [\n                \"Newtown\"\n            ]\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "{{base-url}}/llm-orchestration-agents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"// ✅ Ensure status code is 200\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Ensure response is JSON\r",
+									"pm.test(\"Response is JSON\", () => {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"// ✅ Parse the response body\r",
+									"let response = {};\r",
+									"try {\r",
+									"    response = pm.response.json();\r",
+									"} catch (error) {\r",
+									"    pm.test(\"Response body should be valid JSON\", function () {\r",
+									"        pm.expect.fail(\"❌ Response body is not valid JSON.\");\r",
+									"    });\r",
+									"};\r",
+									"\r",
+									"// ✅ Ensure status is success\r",
+									"pm.test(\"Status is success\", () => {\r",
+									"    pm.expect(response.status).to.eql(\"success\");\r",
+									"});\r",
+									"\r",
+									"// ✅ Ensure response.resp exists\r",
+									"pm.test(\"Response.resp exists\", () => {\r",
+									"    pm.expect(response).to.have.property(\"response\");\r",
+									"    pm.expect(response.response).to.have.property(\"resp\");\r",
+									"});\r",
+									"\r",
+									"// ✅ Ensure detailsData exists and is an array\r",
+									"pm.test(\"detailsData exists and is an array\", () => {\r",
+									"    pm.expect(response.response.resp).to.have.property(\"detailsData\");\r",
+									"    pm.expect(Array.isArray(response.response.resp.detailsData)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"// ✅ Ensure detailsData is not empty\r",
+									"pm.test(\"detailsData is not empty\", () => {\r",
+									"    pm.expect(response.response.resp.detailsData.length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate structure and data types of each item in detailsData\r",
+									"pm.test(\"Validate structure and data types of each item in detailsData\", () => {\r",
+									"    const detailsData = response.response.resp.detailsData;\r",
+									"\r",
+									"    detailsData.forEach(item => {\r",
+									"        // wq_row_id\r",
+									"        pm.test(\"Item has wq_row_id\", () => {\r",
+									"            pm.expect(item).to.have.property(\"wq_row_id\");\r",
+									"            pm.expect(item.wq_row_id).to.be.a(\"number\");\r",
+									"        });\r",
+									"\r",
+									"        // propertytype\r",
+									"        pm.test(\"Item has propertytype\", () => {\r",
+									"            pm.expect(item).to.have.property(\"propertytype\");\r",
+									"            pm.expect(item.propertytype).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // state\r",
+									"        pm.test(\"Item has state\", () => {\r",
+									"            pm.expect(item).to.have.property(\"state\");\r",
+									"            pm.expect(item.state).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // bathrooms\r",
+									"        pm.test(\"Item has bathrooms\", () => {\r",
+									"            pm.expect(item).to.have.property(\"bathrooms\");\r",
+									"            pm.expect(item.bathrooms).to.be.a(\"number\");\r",
+									"        });\r",
+									"\r",
+									"        // bedrooms\r",
+									"        pm.test(\"Item has bedrooms\", () => {\r",
+									"            pm.expect(item).to.have.property(\"bedrooms\");\r",
+									"            pm.expect(item.bedrooms).to.be.a(\"number\");\r",
+									"        });\r",
+									"\r",
+									"        // carspaces\r",
+									"        pm.test(\"Item has carspaces\", () => {\r",
+									"            pm.expect(item).to.have.property(\"carspaces\");\r",
+									"            pm.expect(item.carspaces).to.be.a(\"number\");\r",
+									"        });\r",
+									"\r",
+									"        // streetnumber\r",
+									"        pm.test(\"Item has streetnumber\", () => {\r",
+									"            pm.expect(item).to.have.property(\"streetnumber\");\r",
+									"            pm.expect(item.streetnumber).to.be.a(\"string\"); // Or \"number\" if appropriate\r",
+									"        });\r",
+									"\r",
+									"        // street\r",
+									"        pm.test(\"Item has street\", () => {\r",
+									"            pm.expect(item).to.have.property(\"street\");\r",
+									"            pm.expect(item.street).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // area\r",
+									"        pm.test(\"Item has area\", () => {\r",
+									"            pm.expect(item).to.have.property(\"area\");\r",
+									"            pm.expect(item.area).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // suburb\r",
+									"        pm.test(\"Item has suburb\", () => {\r",
+									"            pm.expect(item).to.have.property(\"suburb\");\r",
+									"            pm.expect(item.suburb).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // postcode\r",
+									"        pm.test(\"Item has postcode\", () => {\r",
+									"            pm.expect(item).to.have.property(\"postcode\");\r",
+									"            pm.expect(item.postcode).to.be.a(\"string\"); // Or \"number\" if appropriate\r",
+									"        });\r",
+									"\r",
+									"        // landareasqm\r",
+									"        pm.test(\"Item has landareasqm\", () => {\r",
+									"            pm.expect(item).to.have.property(\"landareasqm\");\r",
+									"            pm.expect(item.landareasqm).to.be.a(\"number\");\r",
+									"        });\r",
+									"\r",
+									"        // region\r",
+									"        pm.test(\"Item has region\", () => {\r",
+									"            pm.expect(item).to.have.property(\"region\");\r",
+									"            pm.expect(item.region).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // latitude\r",
+									"        pm.test(\"Item has latitude\", () => {\r",
+									"            pm.expect(item).to.have.property(\"latitude\");\r",
+									"            pm.expect(item.latitude).to.be.a(\"number\");\r",
+									"        });\r",
+									"\r",
+									"        // longitude\r",
+									"        pm.test(\"Item has longitude\", () => {\r",
+									"            pm.expect(item).to.have.property(\"longitude\");\r",
+									"            pm.expect(item.longitude).to.be.a(\"number\");\r",
+									"        });\r",
+									"\r",
+									"        // address\r",
+									"        pm.test(\"Item has address\", () => {\r",
+									"            pm.expect(item).to.have.property(\"address\");\r",
+									"            pm.expect(item.address).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // postedon\r",
+									"        pm.test(\"Item has postedon\", () => {\r",
+									"            pm.expect(item).to.have.property(\"postedon\");\r",
+									"            pm.expect(item.postedon).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // inspecton\r",
+									"        pm.test(\"Item has inspecton\", () => {\r",
+									"            pm.expect(item).to.have.property(\"inspecton\");\r",
+									"            pm.expect(item.inspecton).to.be.a(\"string\");\r",
+									"        });\r",
+									"\r",
+									"        // propertyimages\r",
+									"        pm.test(\"Item has propertyimages\", () => {\r",
+									"            pm.expect(item).to.have.property(\"propertyimages\");\r",
+									"            pm.expect(item.propertyimages).to.be.a(\"string\");\r",
+									"        });\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"entities\": [],\r\n    \"indexName\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\",\r\n    \"spellCheck\": {\r\n        \"spellChanged\": false,\r\n        \"updatedText\": \"\",\r\n        \"actualText\": \"\"\r\n    },\r\n    \"metaData\": {\r\n        \"filters\": [],\r\n        \"choices\": [],\r\n        \"bucketSize\": 0,\r\n        \"requestType\": \"\",\r\n        \"entities\": [],\r\n        \"ignoreNLU\": false,\r\n        \"pageNumberChange\": false,\r\n        \"pageNumber\": 1,\r\n        \"pageSize\": 30,\r\n        \"freeText\": false,\r\n        \"queryCategory\": \"\",\r\n        \"isWakeWord\": false,\r\n        \"timezone\": \"Asia/Calcutta\",\r\n        \"searchQuery\": \"Create a reminder to discuss collaboration opportunities with @sachin by tomorrow\"\r\n    },\r\n    \"utterance\": \"Create a reminder to discuss collaboration opportunities with @sachin by tomorrow\",\r\n    \"user\": {\r\n        \"userAppId\": \"fc12205d-0f50-4a62-a2df-4c0abb6f62ca||wayiqb2f1c21b96f14fbfab7224a2aefd87||120\",\r\n        \"userId\": \"{{user_id}}\",\r\n        \"name\": \"{{user_name}}\",\r\n        \"accountId\": \"57\",\r\n        \"channelId\": \"wayIQWeb\",\r\n        \"authToken\": \"{{auth-token}}\",\r\n        \"trackId\": \"\",\r\n        \"requestId\": \"\",\r\n        \"parentId\": \"\",\r\n        \"email\": \"{{user_email}}\",\r\n        \"locationId\": \"RJfqOmRlWQzMcUBhkYC6\"\r\n    },\r\n    \"clientDetails\": []\r\n}\r\n "
+						},
+						"url": {
+							"raw": "{{base-url}}/llm-orchestration-agents",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"llm-orchestration-agents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "{{base-url}}/llm-orchestration-agents",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"entities\": [],\r\n  \"text\": \"D My client John is looking for an investment property within 40 kilometer radius from Brisbane City. Four bedroom, 2 bathroom, over 5% rental yield and 10% capital growth and a budget of $1,000,000. Show me what options I can present to him\",\r\n  \"indexName\": \"placeholder_index_name\",\r\n  \"spellCheck\": {\r\n    \"spellChanged\": false,\r\n    \"updatedText\": \"\",\r\n    \"actualText\": \"\"\r\n  },\r\n  \"metaData\": {\r\n    \"filters\": [],\r\n    \"choices\": [],\r\n    \"bucketSize\": 0,\r\n    \"requestType\": \"\",\r\n    \"entities\": [],\r\n    \"ignoreNLU\": false,\r\n    \"pageNumberChange\": false,\r\n    \"pageNumber\": 1,\r\n    \"pageSize\": 30,\r\n    \"freeText\": false,\r\n    \"queryCategory\": \"\",\r\n    \"isWakeWord\": false,\r\n    \"timezone\": \"Asia/Calcutta\",\r\n    \"searchQuery\": \"D My client John is looking for an investment property within 40 kilometer radius from Brisbane City. Four bedroom, 2 bathroom, over 5% rental yield and 10% capital growth and a budget of $1,000,000. Show me what options I can present to him\"\r\n  },\r\n  \"utterance\": \"D My client John is looking for an investment property within 40 kilometer radius from Brisbane City. Four bedroom, 2 bathroom, over 5% rental yield and 10% capital growth and a budget of $1,000,000. Show me what options I can present to him\",\r\n  \"user\": {\r\n    \"userAppId\": \"placeholder_user_app_id\",\r\n    \"userId\": \"placeholder_user_id\",\r\n    \"name\": \"placeholder_user_name\",\r\n    \"accountId\": \"placeholder_account_id\",\r\n    \"channelId\": \"wayIQWeb\",\r\n    \"authToken\": \"\",\r\n    \"trackId\": \"placeholder_track_id\",\r\n    \"requestId\": \"placeholder_request_id\",\r\n    \"parentId\": \"placeholder_parent_id\",\r\n    \"email\": \"placeholder_user_email\"\r\n  },\r\n  \"clientDetails\": [\r\n    {\r\n      \"id\": \"placeholder_client_id\",\r\n      \"name\": \"placeholder_client_name\",\r\n      \"email\": \"placeholder_client_email\"\r\n    }\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/llm-orchestration-agents",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"llm-orchestration-agents"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"status\": \"success\",\r\n  \"response\": {\r\n    \"resp\": {\r\n      \"totalCount\": 27,\r\n      \"voiceDescription\": \"Sure. Here are the properties that match your search criteria. I've found 27 properties in Greater Brisbane available for sale. The listings include 25 houses and 2 new house land packages, all featuring a minimum of 4 bedrooms and 2 bathrooms. These properties offer between 1 to 8 car spaces and have building areas ranging from 116 to 600 square meters. The price range for the new house land packages is between $690,000 and $760,000, while no specific price range is provided for the houses under one million dollars.\",\r\n      \"detailsData\": [\r\n        {\r\n          \"wq_row_id\": 2019977631,\r\n          \"propertytype\": \"House\",\r\n          \"state\": \"QLD\",\r\n          \"bathrooms\": 2,\r\n          \"bedrooms\": 4,\r\n          \"carspaces\": 1,\r\n          \"streetnumber\": \"59\",\r\n          \"street\": \"Fitzpatrick Circuit\",\r\n          \"area\": \"Ipswich Region\",\r\n          \"suburb\": \"AUGUSTINE HEIGHTS\",\r\n          \"postcode\": \"4300\",\r\n          \"landareasqm\": 303,\r\n          \"region\": \"South East Queensland Greater Region\",\r\n          \"latitude\": -27.6522884,\r\n          \"longitude\": 152.886185,\r\n          \"address\": \"59 Fitzpatrick Circuit, Augustine Heights\",\r\n          \"postedon\": \"2025-05-07T16:53:52\",\r\n          \"inspecton\": \"\",\r\n          \"propertyimages\": \"https://bucket-api.domain.com.au/v1/bucket/image/2019977631_1_1_250507_065352-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_2_1_250507_065352-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_3_1_250507_065352-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_4_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_5_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_6_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_7_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_8_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_9_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_10_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_11_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_12_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_13_1_250507_065407-w1920-h1440,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_14_1_250508_044104-w2038-h1441\",\r\n          \"sellerAgentDetails\": {\r\n            \"type\": \"Agency\",\r\n            \"id\": 29149,\r\n            \"name\": \"Ray White Brookwater and Greater Springfield\",\r\n            \"logoUrl\": \"https://images.domain.com.au/img/Agencys/29149/logo_29149.jpg?date=133646295048510986\",\r\n            \"preferredColourHex\": \"#FEE536\",\r\n            \"bannerUrl\": \"https://images.domain.com.au/img/Agencys/29149/banner_29149.jpg?date=132827878526705308\",\r\n            \"contacts\": [\r\n              {\r\n                \"name\": \"Angela Browne\",\r\n                \"photoUrl\": \"https://images.domain.com.au/img/29149/contact_1381262.jpeg?mod=250520-143320\"\r\n              },\r\n              {\r\n                \"name\": \"Sarah Sarmiento\",\r\n                \"photoUrl\": \"https://images.domain.com.au/img/29149/contact_1948403.png?mod=250520-143320\"\r\n              }\r\n            ]\r\n          },\r\n          \"propertyDescription\": \"<b></b>\\nNestled within the family-friendly enclave of The Springs in ever-popular Augustine Heights, this beautifully maintained home offers low-maintenance living with all the modern comforts - a perfect entry point for first home buyers or a sav...\"\r\n        }\r\n      ],\r\n      \"searchQuery\": \"D My client John is looking for an investment property within 40 kilometer radius from Brisbane City. Four bedroom, 2 bathroom, over 5% rental yield and 10% capital growth and a budget of $1,000,000. Show me what options I can present to him\",\r\n      \"appliedFilters\": {\r\n        \"filters\": {\r\n          \"bedrooms\": 4,\r\n          \"bathrooms\": 2,\r\n          \"price\": \"< 1000000\",\r\n          \"surrounding_radius_in_meters\": 40000,\r\n          \"listing_type\": \"Sale\",\r\n          \"greater_capital_city_region\": \"Greater Brisbane\",\r\n          \"capital_growth\": \"high\"\r\n        },\r\n        \"strategyFilter\": {}\r\n      },\r\n      \"filters\": {\r\n        \"action_filters\": {\r\n          \"action_filters\": [\r\n            \"create_collection\"\r\n          ]\r\n        },\r\n        \"domain_filters\": {\r\n          \"min_bedrooms\": 4,\r\n          \"max_bedrooms\": 4,\r\n          \"min_bathrooms\": 2,\r\n          \"max_bathrooms\": 2,\r\n          \"max_price\": 1000000,\r\n          \"surrounding_radius_in_meters\": 40000,\r\n          \"property_types\": null,\r\n          \"listing_type\": \"Sale\"\r\n        },\r\n        \"htag_filters\": {\r\n          \"greater_capital_city_region\": \"Greater Brisbane\",\r\n          \"capital_growth\": \"high\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Health?detailed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/health/detailed",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"health",
+								"detailed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Health?detailed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/health/detailed",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"health",
+										"detailed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Sep 2025 11:13:09 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "2591"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "2593"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "16"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "46fe550346a9334320b59e7f1274d65d"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"services\": [\n        {\n            \"component_name\": \"MongoDB\",\n            \"status\": \"healthy\",\n            \"message\": \"MongoDB is healthy\",\n            \"details\": {},\n            \"response_time_secs\": 0.0356\n        },\n        {\n            \"component_name\": \"PostgreSQL\",\n            \"status\": \"healthy\",\n            \"message\": \"PostgreSQL connection is healthy (via pooled async connection)\",\n            \"details\": {\n                \"connections_num\": 30,\n                \"connections_ms\": 2874,\n                \"requests_num\": 3,\n                \"usage_ms\": 30,\n                \"pool_min\": 30,\n                \"pool_max\": 60,\n                \"pool_size\": 30,\n                \"pool_available\": 30,\n                \"requests_waiting\": 0,\n                \"reconnections\": 0,\n                \"last_health_check\": 1758021186.918167\n            },\n            \"response_time_secs\": 0.0133\n        },\n        {\n            \"component_name\": \"OpenAI\",\n            \"status\": \"healthy\",\n            \"message\": \"OpenAI client responded\",\n            \"details\": {},\n            \"response_time_secs\": 1.1565\n        },\n        {\n            \"component_name\": \"Azure OpenAI\",\n            \"status\": \"healthy\",\n            \"message\": \"Azure OpenAI responded\",\n            \"details\": {\n                \"status_code\": 200\n            },\n            \"response_time_secs\": 1.2506\n        },\n        {\n            \"component_name\": \"Dragonfly\",\n            \"status\": \"healthy\",\n            \"message\": \"Dragonfly responded to ping\",\n            \"details\": {},\n            \"response_time_secs\": 0.002\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Health",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/health",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/health",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Sep 2025 11:13:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "11"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "14"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "23"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "9b5f044b7d54b23a7e1c0243dcfaf736"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"internalErrorMessage\": \"\",\n    \"displayMessage\": \"Everything is good\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Meeting Minutes",
+			"item": [
+				{
+					"name": "https://api-wayiq.qa.purplescape.com/api/v1/wsc-wayiq-llm-orchestration/extract-mom Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Status code check\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Check if 'success' field exists and is true\r",
+									"pm.test(\"Response contains success = true\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"success\");\r",
+									"    pm.expect(jsonData.success).to.be.true;\r",
+									"});\r",
+									"\r",
+									"// ✅ Check if 'audioId' matches the request\r",
+									"pm.test(\"Response contains audioId\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"audioId\");\r",
+									"    pm.expect(jsonData.audioId).to.eql(\"qwert1235\"); // match input value\r",
+									"});\r",
+									"\r",
+									"// ✅ Check if 'fileName' exists and is non-empty\r",
+									"pm.test(\"Response contains fileName\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"fileName\");\r",
+									"    pm.expect(jsonData.fileName).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.fileName.trim().length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ Optional: check if 'message' field exists\r",
+									"pm.test(\"Response contains message\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"message\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/ce08eb3a-727d-4366-b05f-e54210db8bc8_dscSyhYP3nq4yX2utke9VG.wav"
+								},
+								{
+									"key": "audioId",
+									"value": "qwert1235",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base-url}}/extract-mom",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"extract-mom"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://api-wayiq.qa.purplescape.com/api/v1/wsc-wayiq-llm-orchestration/extract-mom' \\\n\r\n--header 'auth-token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50SWRcIjo0fV0sXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IHVzZXJcIixcImxvY2F0aW9uSWRcIjpcIlJKZnFPbVJsV1F6TWNVQmhrWUM2XCIsXCJ1c2VySWRcIjpcIldXYXJvWkhMOXp4b291ZGQxMzA4XCJ9LFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInVzZXJJZFwiOjMxLFwidGVuYW50TmFtZVwiOlwic2FyYXZhbmFuLm1AcHVycGxlc2xhdGUuaW5cIixcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NCxcIm5hbWVcIjpcIk1hcmkgVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjp0cnVlLFwiY2hhbm5lbE5hbWVcIjpcIlwifSIsImV4cCI6MTc2NjQwNzMwOCwiaXNzIjoiZTlNQmhJZ1p2OTJ3ZzlublZaWVZmRWVEYVY5dXNtZVYifQ.iZeFRgxNqDjrulnxWcEWM6FzHWvYEh8eIYKahriTDDs' \\\n\r\n--form 'file=@\"/C:/Users/User/Downloads/ce08eb3a-727d-4366-b05f-e54210db8bc8_dscSyhYP3nq4yX2utke9VG.wav\"' \\\n\r\n--form 'audioId=\"qwert1235\"'\n "
+					},
+					"response": [
+						{
+							"name": "https://api-wayiq.qa.purplescape.com/api/v1/wsc-wayiq-llm-orchestration/extract-mom Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/User/Downloads/ce08eb3a-727d-4366-b05f-e54210db8bc8_dscSyhYP3nq4yX2utke9VG.wav"
+										},
+										{
+											"key": "audioId",
+											"value": "qwert1235",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base-url}}/extract-mom",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"extract-mom"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 16 Sep 2025 11:14:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "168"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "170"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "9"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "97f95122d57d47159cea2d4e76a3d742"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"error_description\": \"\",\n    \"data\": {\n        \"participants\": [\n            \"Alex\"\n        ],\n        \"key_discussions\": [\n            \"Alex is not willing to buy the property because the process is too lengthy.\"\n        ],\n        \"decisions\": [],\n        \"action_items\": [],\n        \"sentiment\": \"Neutral\",\n        \"transcript\": \"Today I had a discussion with Alex and he is not willing to buy the property because it is too long to buy.\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get Query Type",
+			"item": [
+				{
+					"name": "get-query-type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/get-query-type?question=What is the vacancy rate, and how does it affect rental demand?",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"get-query-type"
+							],
+							"query": [
+								{
+									"key": "question",
+									"value": "What is the vacancy rate, and how does it affect rental demand?"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get-query-type",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-infer-url}}/get-query-type?question=What is the vacancy rate, and how does it affect rental demand?",
+									"host": [
+										"{{base-infer-url}}"
+									],
+									"path": [
+										"get-query-type"
+									],
+									"query": [
+										{
+											"key": "question",
+											"value": "What is the vacancy rate, and how does it affect rental demand?"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 30 May 2025 04:22:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-request-id",
+									"value": "42060930-c612-4f68-907d-2d1bc570819c"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "1457"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "1463"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "38"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "154fc32fd2ac9471f711b0467d11fd0f"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"question\": \"What is the vacancy rate, and how does it affect rental demand?\",\n    \"query_type\": \"Unstructured Data Query\"\n}"
+						}
+					]
+				},
+				{
+					"name": "strategy-questions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Status code check\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// ✅ Required fields exist\r",
+									"pm.test(\"Response has required fields\", function () {\r",
+									"    pm.expect(jsonData).to.have.property(\"contactId\");\r",
+									"    pm.expect(jsonData).to.have.property(\"locationId\");\r",
+									"});\r",
+									"\r",
+									"// ✅ 'contactId' field checks\r",
+									"pm.test(\"'contactId' is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.contactId).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.contactId.trim().length).to.be.above(0);\r",
+									"});\r",
+									"\r",
+									"// ✅ 'locationId' field checks\r",
+									"pm.test(\"'locationId' is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.locationId).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.locationId.trim().length).to.be.above(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							},
+							{
+								"key": "user-id",
+								"value": "228",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"contactId\": \"string\",\r\n  \"locationId\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-infer-url}}/strategy-questions",
+							"host": [
+								"{{base-infer-url}}"
+							],
+							"path": [
+								"strategy-questions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "strategy-questions",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									},
+									{
+										"key": "user-id",
+										"value": "\"user-id\"",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"contactId\": \"string\",\r\n  \"locationId\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-infer-url}}/strategy-questions",
+									"host": [
+										"{{base-infer-url}}"
+									],
+									"path": [
+										"strategy-questions"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "[\n  \"What are the key strategic goals for this contact in this location?\"\n]"
+						}
+					]
+				},
+				{
+					"name": "inference",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is valid JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"// ✅ Check top-level fields exist\r",
+									"[\"question\", \"answer\", \"similarity_score\", \"source_urls\"].forEach(field => {\r",
+									"    pm.test(`Field '${field}' exists`, function () {\r",
+									"        pm.expect(jsonData).to.have.property(field);\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'question' is a non-empty string\r",
+									"pm.test(\"Question is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.question).to.be.a(\"string\").and.not.empty;\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'answer' is a non-empty string\r",
+									"pm.test(\"Answer is a non-empty string\", function () {\r",
+									"    pm.expect(jsonData.answer).to.be.a(\"string\").and.not.empty;\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'similarity_score' is a number between 0 and 1\r",
+									"pm.test(\"Similarity score is a number between 0 and 1\", function () {\r",
+									"    pm.expect(jsonData.similarity_score).to.be.a(\"number\").within(0, 1);\r",
+									"});\r",
+									"\r",
+									"// ✅ Validate 'source_urls' is a non-empty array of valid URLs\r",
+									"pm.test(\"Source URLs is a non-empty array of valid URLs\", function () {\r",
+									"    pm.expect(jsonData.source_urls).to.be.an(\"array\").that.is.not.empty;\r",
+									"    jsonData.source_urls.forEach((url, index) => {\r",
+									"        pm.test(`Source URL [${index}] is valid`, function () {\r",
+									"            pm.expect(url).to.match(/^https?:\\/\\/[\\w\\-\\.]+\\.\\w{2,}(\\/\\S*)?$/);\r",
+									"        });\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-infer-url}}/inference?question=What is the application fee for an estate agent's licence in Victoria?",
+							"host": [
+								"{{base-infer-url}}"
+							],
+							"path": [
+								"inference"
+							],
+							"query": [
+								{
+									"key": "question",
+									"value": "What is the application fee for an estate agent's licence in Victoria?"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "inference",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "auth-token",
+										"value": "{{auth-dev-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/inference?question=What is the vacancy rate, and how does it affect rental demand?",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"inference"
+									],
+									"query": [
+										{
+											"key": "question",
+											"value": "What is the vacancy rate, and how does it affect rental demand?"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 30 May 2025 04:36:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-request-id",
+									"value": "8547d29e-fce1-4c84-9f4d-10ccac35c0ff"
+								},
+								{
+									"key": "x-envoy-upstream-service-time",
+									"value": "5849"
+								},
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Kong-Upstream-Latency",
+									"value": "5853"
+								},
+								{
+									"key": "X-Kong-Proxy-Latency",
+									"value": "83"
+								},
+								{
+									"key": "Via",
+									"value": "kong/3.7.1"
+								},
+								{
+									"key": "X-Kong-Request-Id",
+									"value": "c1995671775b4054e4b8fd6dd0bd4758"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+								},
+								{
+									"key": "Permissions-Policy",
+									"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"question\": \"What is the vacancy rate, and how does it affect rental demand?\",\n    \"answer\": \"The **vacancy rate** is a key metric in the real estate market, representing the percentage of rental properties that are unoccupied at a given time. It is calculated by dividing the number of vacant rental units by the total number of rental units available, then multiplying by 100 to get a percentage. \\n\\n**Impact on Rental Demand:**\\n1. **High Vacancy Rate**: \\n   - Indicates an oversupply of rental properties.\\n   - Can lead to **lower rental prices** as landlords compete to attract tenants.\\n   - May result in **increased incentives** for tenants, such as reduced deposits or rent-free periods.\\n\\n2. **Low Vacancy Rate**: \\n   - Suggests a strong demand for rental properties.\\n   - Landlords may raise rental prices due to competition among prospective tenants.\\n   - Can lead to **fewer concessions** offered to tenants, as properties are more likely to be filled quickly.\\n\\n3. **Market Dynamics**: \\n   - The vacancy rate can fluctuate based on various factors, including economic conditions, employment rates, and seasonal trends.\\n   - A **stable or declining vacancy rate** often signals a healthy rental market, encouraging new investments in rental properties.\\n\\nUnderstanding the vacancy rate is crucial for both landlords and tenants, as it directly influences rental pricing, availability, and overall market health.\",\n    \"similarity_score\": 0.47202465931574505,\n    \"source_urls\": [\n        \"https://www.sa.gov.au/topics/housing/renting-and-letting/renting-privately/start-of-tenancy/Choosing-a-tenant\",\n        \"https://www.fairtrading.nsw.gov.au/housing-and-property/property-professionals/working-as-a-property-agent/rules-of-conduct\"\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
