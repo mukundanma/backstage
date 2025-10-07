@@ -6,8 +6,5 @@ metadata:
 spec:
   type: dir
   targets:
-    - ./api-collections/artifact-service/catalog-info.yaml
-    - ./api-collections/auth-service/catalog-info.yaml
-    - ./api-collections/llm-inference/catalog-info.yaml
-    - ./api-collections/llm-orch-service/catalog-info.yaml
-    - ./api-collections/nlp-service/catalog-info.yaml
+    - ./artifact-service/catalog-info.yaml
+    - ./nlp-service/catalog-info.yaml
