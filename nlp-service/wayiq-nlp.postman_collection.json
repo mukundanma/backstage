@@ -1,0 +1,996 @@
+{
+	"info": {
+		"_postman_id": "1cf1f049-f703-402b-abfc-ef587672cf3c",
+		"name": "NLP Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43448221"
+	},
+	"item": [
+		{
+			"name": "createjob",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// ✅ Status code check\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// ✅ Top-level field checks\r",
+							"pm.test(\"Service is schedule_photoshoot\", function () {\r",
+							"    pm.expect(jsonData.service).to.eql(\"schedule_photoshoot\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Collection name exists\", function () {\r",
+							"    pm.expect(jsonData.collectionName).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"// ✅ Nested propertyDetails checks\r",
+							"pm.test(\"PropertyDetails has correct type\", function () {\r",
+							"    pm.expect(jsonData.propertyDetails.propertytype).to.eql(\"ApartmentUnitFlat\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Property has 2 bedrooms and 2 bathrooms\", function () {\r",
+							"    pm.expect(jsonData.propertyDetails.bedrooms).to.eql(2);\r",
+							"    pm.expect(jsonData.propertyDetails.bathrooms).to.eql(2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Latitude and Longitude are numbers\", function () {\r",
+							"    pm.expect(jsonData.propertyDetails.latitude).to.be.a(\"number\");\r",
+							"    pm.expect(jsonData.propertyDetails.longitude).to.be.a(\"number\");\r",
+							"});\r",
+							"\r",
+							"// ✅ Seller agent checks\r",
+							"pm.test(\"Seller agent name is correct\", function () {\r",
+							"    pm.expect(jsonData.propertyDetails.sellerAgentDetails.name).to.eql(\"Nelson Alexander Fitzroy\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"At least 1 contact exists\", function () {\r",
+							"    pm.expect(jsonData.propertyDetails.sellerAgentDetails.contacts.length).to.be.above(0);\r",
+							"});\r",
+							"\r",
+							"// ✅ String contains check\r",
+							"pm.test(\"Property description contains 'Collingwood'\", function () {\r",
+							"    pm.expect(jsonData.propertyDetails.propertyDescription).to.include(\"Collingwood\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "userId",
+						"value": "582"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"service\": \"schedule_photoshoot\",\n  \"collectionName\": \"coll_20250904142257\",\n  \"propertyDetails\": {\n    \"wq_row_id\": 2020246120,\n    \"propertytype\": \"ApartmentUnitFlat\",\n    \"state\": \"VIC\",\n    \"bathrooms\": 2,\n    \"bedrooms\": 2,\n    \"carspaces\": 1,\n    \"streetnumber\": \"68\",\n    \"street\": \"Cambridge Street\",\n    \"area\": \"Yarra City Council - Greater Area\",\n    \"suburb\": \"COLLINGWOOD\",\n    \"postcode\": \"3066\",\n    \"region\": \"Melbourne Region\",\n    \"latitude\": -37.8067856,\n    \"longitude\": 144.985367,\n    \"address\": \"414/68 Cambridge Street, Collingwood\",\n    \"postedon\": \"2025-09-04T12:02:11\",\n    \"inspecton\": \"\",\n    \"propertyimages\": \"https://bucket-api.domain.com.au/v1/bucket/image/2020246120_1_1_250904_020210-w1600-h1067/800x600\",\n    \"sellerAgentDetails\": {\n      \"type\": \"Agency\",\n      \"id\": 4718,\n      \"name\": \"Nelson Alexander Fitzroy\",\n      \"logoUrl\": \"https://images.domain.com.au/img/Agencys/4718/logo_4718.jpeg\",\n      \"preferredColourHex\": \"#1e0f14\",\n      \"bannerUrl\": \"https://images.domain.com.au/img/Agencys/4718/banner_4718.jpeg\",\n      \"contacts\": [\n        {\n          \"name\": \"James McCulloch\",\n          \"photoUrl\": \"https://images.domain.com.au/img/4718/contact_1782374.jpeg?mod=250908-145124\"\n        },\n        {\n          \"name\": \"Rick Daniel\",\n          \"photoUrl\": \"https://images.domain.com.au/img/4718/contact_972465.jpeg?mod=250908-145124\"\n        }\n      ]\n    },\n    \"propertyDescription\": \"<b></b>\\nDesigner edge in the heart of the action\\n\\nLive at the heart of Collingwood's creative pulse...\",\n    \"source\": \"domain\"\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-nlp-url}}/waytask/createjob",
+					"host": [
+						"{{base-nlp-url}}"
+					],
+					"path": [
+						"waytask",
+						"createjob"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'https://api-wayiq.dev.purplescape.com/api/v1/wsc-wayiq-nlp/waytask/createjob' \\\n--header 'userId: 582' \\\n--header 'auth-token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiOTQ3NjQxOTgtYTgyMC00OTBhLTkxNDQtNzU0NzUyZGQxYjVmXCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTc3NzUxNzAsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.XvMZw4onv8VGaB9eQ91GlZRzd2kzpwiMZy4R9aIqvqo' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"service\": \"schedule_photoshoot\",\n    \"collectionName\": \"coll_20250904142257\",\n    \"propertyDetails\": {\n        \"wq_row_id\": 2020246120,\n        \"propertytype\": \"ApartmentUnitFlat\",\n        \"state\": \"VIC\",\n        \"bathrooms\": 2,\n        \"bedrooms\": 2,\n        \"carspaces\": 1,\n        \"streetnumber\": \"68\",\n        \"street\": \"Cambridge Street\",\n        \"area\": \"Yarra City Council - Greater Area\",\n        \"suburb\": \"COLLINGWOOD\",\n        \"postcode\": \"3066\",\n        \"region\": \"Melbourne Region\",\n        \"latitude\": -37.8067856,\n        \"longitude\": 144.985367,\n        \"address\": \"414/68 Cambridge Street, Collingwood\",\n        \"postedon\": \"2025-09-04T12:02:11\",\n        \"inspecton\": \"\",\n        \"propertyimages\": \"https://bucket-api.domain.com.au/v1/bucket/image/2020246120_1_1_250904_020210-w1600-h1067/800x600,h…,\n        \"sellerAgentDetails\": {\n            \"type\": \"Agency\",\n            \"id\": 4718,\n            \"name\": \"Nelson Alexander Fitzroy\",\n            \"logoUrl\": \"https://images.domain.com.au/img/Agencys/4718/logo_4718.jpeg\",\n            \"preferredColourHex\": \"#1e0f14\",\n            \"bannerUrl\": \"https://images.domain.com.au/img/Agencys/4718/banner_4718.jpeg\",\n            \"contacts\": [\n                {\n                    \"name\": \"James McCulloch\",\n                    \"photoUrl\": \"https://images.domain.com.au/img/4718/contact_1782374.jpeg?mod=250908-145124\"\n                },\n                {\n                    \"name\": \"Rick Daniel\",\n                    \"photoUrl\": \"https://images.domain.com.au/img/4718/contact_972465.jpeg?mod=250908-145124\"\n                }\n            ]\n        },\n        \"propertyDescription\": \"<b></b>\nDesigner edge in the heart of the action\\n\\nLive at the heart of Collingwood'\\''s creative pulse in this refined residence, set within an award-winning building by world-renowned architect John Wardle. Designed for both elegance and ease, the t...\",\n        \"source\": \"domain\"\n    }\n}'"
+			},
+			"response": [
+				{
+					"name": "createjob",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "userId",
+								"value": "582"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"service\": \"schedule_photoshoot\",\n  \"collectionName\": \"coll_20250904142257\",\n  \"propertyDetails\": {\n    \"wq_row_id\": 2020246120,\n    \"propertytype\": \"ApartmentUnitFlat\",\n    \"state\": \"VIC\",\n    \"bathrooms\": 2,\n    \"bedrooms\": 2,\n    \"carspaces\": 1,\n    \"streetnumber\": \"68\",\n    \"street\": \"Cambridge Street\",\n    \"area\": \"Yarra City Council - Greater Area\",\n    \"suburb\": \"COLLINGWOOD\",\n    \"postcode\": \"3066\",\n    \"region\": \"Melbourne Region\",\n    \"latitude\": -37.8067856,\n    \"longitude\": 144.985367,\n    \"address\": \"414/68 Cambridge Street, Collingwood\",\n    \"postedon\": \"2025-09-04T12:02:11\",\n    \"inspecton\": \"\",\n    \"propertyimages\": \"https://bucket-api.domain.com.au/v1/bucket/image/2020246120_1_1_250904_020210-w1600-h1067/800x600\",\n    \"sellerAgentDetails\": {\n      \"type\": \"Agency\",\n      \"id\": 4718,\n      \"name\": \"Nelson Alexander Fitzroy\",\n      \"logoUrl\": \"https://images.domain.com.au/img/Agencys/4718/logo_4718.jpeg\",\n      \"preferredColourHex\": \"#1e0f14\",\n      \"bannerUrl\": \"https://images.domain.com.au/img/Agencys/4718/banner_4718.jpeg\",\n      \"contacts\": [\n        {\n          \"name\": \"James McCulloch\",\n          \"photoUrl\": \"https://images.domain.com.au/img/4718/contact_1782374.jpeg?mod=250908-145124\"\n        },\n        {\n          \"name\": \"Rick Daniel\",\n          \"photoUrl\": \"https://images.domain.com.au/img/4718/contact_972465.jpeg?mod=250908-145124\"\n        }\n      ]\n    },\n    \"propertyDescription\": \"<b></b>\\nDesigner edge in the heart of the action\\n\\nLive at the heart of Collingwood's creative pulse...\",\n    \"source\": \"domain\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-nlp-url}}/waytask/createjob",
+							"host": [
+								"{{base-nlp-url}}"
+							],
+							"path": [
+								"waytask",
+								"createjob"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 17 Sep 2025 05:07:05 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "271"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "275"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "20"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "c2fb22172347263500ca7d71f8d2533f"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Draft has been created successfully\",\n        \"draftId\": \"2620\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "notes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// ✅ Status code check\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// ✅ Expected key-value pairs (make it reusable!)\r",
+							"const expected = {\r",
+							"    category: \"property_requirements\",\r",
+							"    notes: \"2 bedroom, 2 carspaces apartments in Sydney\",\r",
+							"    contactId: \"string\" // just check type for dynamic values\r",
+							"};\r",
+							"\r",
+							"// ✅ Loop through expected fields\r",
+							"Object.keys(expected).forEach(function (key) {\r",
+							"    pm.test(`Check ${key}`, function () {\r",
+							"        pm.expect(jsonData).to.have.property(key);\r",
+							"\r",
+							"        if (expected[key] === \"string\") {\r",
+							"            // Generic string check\r",
+							"            pm.expect(jsonData[key]).to.be.a(\"string\");\r",
+							"            pm.expect(jsonData[key]).to.not.be.empty;\r",
+							"        } else {\r",
+							"            // Exact match\r",
+							"            pm.expect(jsonData[key]).to.eql(expected[key]);\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc"
+					},
+					{
+						"key": "userId",
+						"value": "582"
+					},
+					{
+						"key": "tenantId",
+						"value": "610"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category\": \"property_requirements\",\n    \"notes\": \"2 bedroom, 2 carspaces apartments in Sydney\",\n    \"contactId\": \"7qHCoBxuKCSOkSbVgqmD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-nlp-url}}/crm/notes",
+					"host": [
+						"{{base-nlp-url}}"
+					],
+					"path": [
+						"crm",
+						"notes"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:9710/crm/notes' \\\n--header 'auth-token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjVlZmZhZjUtOTg2ZC00ODM5LWIzYTctN2I5OWU5MTA4MjRkXCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwMjU5NDYsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.0pturYm4Xw3b4zABGxKviLptIlq1P22qlB9Q2VLaUXc' \\\n--header 'userId: 582' \\\n--header 'tenantId: 610' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"category\": \"property_requirements\",\n    \"notes\": \"2 bedroom, 2 carspaces apartments in Sydney\",\n    \"contactId\": \"7qHCoBxuKCSOkSbVgqmD\"\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "contactId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "userId",
+						"value": "{{user_id}}"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc"
+					},
+					{
+						"key": "tenantId",
+						"value": "610"
+					}
+				],
+				"url": {
+					"raw": "{{base-nlp-url}}/crm/property/requirements?contactId=7qHCoBxuKCSOkSbVgqmD",
+					"host": [
+						"{{base-nlp-url}}"
+					],
+					"path": [
+						"crm",
+						"property",
+						"requirements"
+					],
+					"query": [
+						{
+							"key": "contactId",
+							"value": "7qHCoBxuKCSOkSbVgqmD"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:9710/crm/property/requirements?contactId=7qHCoBxuKCSOkSbVgqmD' \\\n--header 'userId: 582' \\\n--header 'auth-token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjVlZmZhZjUtOTg2ZC00ODM5LWIzYTctN2I5OWU5MTA4MjRkXCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwMjU5NDYsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.0pturYm4Xw3b4zABGxKviLptIlq1P22qlB9Q2VLaUXc' \\\n--header 'tenantId: 610' \\\n--data ''"
+			},
+			"response": []
+		},
+		{
+			"name": "suburb_details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// ✅ Status code check\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// ✅ Generic field validation (no hardcoding)\r",
+							"Object.keys(jsonData).forEach(function (key) {\r",
+							"    pm.test(`Check field: ${key}`, function () {\r",
+							"        pm.expect(jsonData).to.have.property(key);\r",
+							"\r",
+							"        // Type validation\r",
+							"        pm.expect(jsonData[key]).to.not.eql(null);\r",
+							"\r",
+							"        if (typeof jsonData[key] === \"string\") {\r",
+							"            pm.expect(jsonData[key]).to.not.be.empty;\r",
+							"        } \r",
+							"        else if (Array.isArray(jsonData[key])) {\r",
+							"            pm.expect(jsonData[key].length).to.be.at.least(0);\r",
+							"        } \r",
+							"        else if (typeof jsonData[key] === \"object\") {\r",
+							"            pm.expect(Object.keys(jsonData[key]).length).to.be.at.least(0);\r",
+							"        }\r",
+							"        // Numbers, booleans are just checked for existence\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"suburb\":\"coorparoo-qld-4151\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-nlp-url}}/suburb",
+					"host": [
+						"{{base-nlp-url}}"
+					],
+					"path": [
+						"suburb"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:9710/suburbFilter' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"suburb\":\"collingwood\"\n}'"
+			},
+			"response": [
+				{
+					"name": "suburb_details",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"suburb\":\"coorparoo-qld-4151\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-nlp-url}}/suburb",
+							"host": [
+								"{{base-nlp-url}}"
+							],
+							"path": [
+								"suburb"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 17 Sep 2025 05:12:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "723"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "727"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "16"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "a355c06638e5fc22cd11130f4e5fee67"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"suburbDetails\": {\n        \"statistics\": {\n            \"house\": {\n                \"propertyType\": \"House\",\n                \"sold\": {\n                    \"count\": 185,\n                    \"mean\": 1788773,\n                    \"min\": 692500,\n                    \"max\": 5405000,\n                    \"median\": 1587500,\n                    \"q1\": 1267500,\n                    \"q3\": 2181250,\n                    \"discountMedian\": 0,\n                    \"medianGrowth\": 0.058,\n                    \"domMedian\": 24,\n                    \"pageviewsMedian\": 4778,\n                    \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                    \"iqr\": 913750\n                },\n                \"leased\": {\n                    \"count\": 309,\n                    \"mean\": 856,\n                    \"min\": 195,\n                    \"max\": 2200,\n                    \"median\": 800,\n                    \"q1\": 675,\n                    \"q3\": 972,\n                    \"medianGrowth\": 0.067,\n                    \"domMedian\": 19,\n                    \"pageviewsMedian\": 1002,\n                    \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                    \"iqr\": 297\n                },\n                \"forSale\": {\n                    \"count\": 67,\n                    \"disclaimer\": \"Derived from publicly available listing data during Jun 2025\"\n                },\n                \"forRent\": {\n                    \"count\": 32,\n                    \"disclaimer\": \"Derived from publicly available rental data during Jun 2025\"\n                },\n                \"investment\": {\n                    \"yieldMedian\": 0.028760263732893778,\n                    \"yieldMean\": 0.029503809236483346,\n                    \"vacancyRate\": 0.0143,\n                    \"marketAbsorptionRate\": 0.44776119402985076,\n                    \"stockOnMarket\": 0.0077,\n                    \"salePriceMedianGrowth12Month\": 0.058,\n                    \"salePriceMedianGrowth3Year\": 0.191,\n                    \"salePriceMedianCAGR3Year\": 0.06,\n                    \"salePriceMedianGrowth5Year\": 0.817,\n                    \"salePriceMedianCAGR5Year\": 0.127,\n                    \"salePriceMedianGrowth10Year\": 1.048,\n                    \"salePriceMedianCAGR10Year\": 0.074,\n                    \"auctionClearanceRate\": 0.52,\n                    \"newListings\": 27,\n                    \"newRentals\": 22\n                }\n            },\n            \"unit\": {\n                \"propertyType\": \"Unit\",\n                \"sold\": {\n                    \"count\": 205,\n                    \"mean\": 761779,\n                    \"min\": 470000,\n                    \"max\": 3805000,\n                    \"median\": 707955,\n                    \"q1\": 653750,\n                    \"q3\": 780000,\n                    \"discountMedian\": 0.013390058217644425,\n                    \"medianGrowth\": 0.115,\n                    \"domMedian\": 19,\n                    \"pageviewsMedian\": 2782,\n                    \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                    \"iqr\": 126250\n                },\n                \"leased\": {\n                    \"count\": 587,\n                    \"mean\": 591,\n                    \"min\": 300,\n                    \"max\": 1700,\n                    \"median\": 582,\n                    \"q1\": 515,\n                    \"q3\": 660,\n                    \"medianGrowth\": 0.059,\n                    \"domMedian\": 15,\n                    \"pageviewsMedian\": 934,\n                    \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                    \"iqr\": 145\n                },\n                \"forSale\": {\n                    \"count\": 22,\n                    \"disclaimer\": \"Derived from publicly available listing data during Jun 2025\"\n                },\n                \"forRent\": {\n                    \"count\": 65,\n                    \"disclaimer\": \"Derived from publicly available rental data during Jun 2025\"\n                },\n                \"investment\": {\n                    \"yieldMedian\": 0.04363636363636364,\n                    \"yieldMean\": 0.043082368228586236,\n                    \"vacancyRate\": 0.0115,\n                    \"marketAbsorptionRate\": 0.6818181818181818,\n                    \"stockOnMarket\": 0.0025,\n                    \"salePriceMedianGrowth12Month\": 0.115,\n                    \"salePriceMedianGrowth3Year\": 0.46,\n                    \"salePriceMedianCAGR3Year\": 0.134,\n                    \"salePriceMedianGrowth5Year\": 0.888,\n                    \"salePriceMedianCAGR5Year\": 0.136,\n                    \"salePriceMedianGrowth10Year\": 0.844,\n                    \"salePriceMedianCAGR10Year\": 0.063,\n                    \"newListings\": 13,\n                    \"newRentals\": 52\n                }\n            },\n            \"bedrooms\": {\n                \"house\": {\n                    \"2\": {\n                        \"propertyType\": \"House\",\n                        \"bedrooms\": 2,\n                        \"sold\": {\n                            \"count\": 14,\n                            \"mean\": 1087535,\n                            \"min\": 692500,\n                            \"max\": 1800000,\n                            \"median\": 1082500,\n                            \"q1\": 797500,\n                            \"q3\": 1201250,\n                            \"discountMedian\": 0.09,\n                            \"medianGrowth\": 0.036,\n                            \"domMedian\": 16,\n                            \"pageviewsMedian\": 5875,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 403750\n                        },\n                        \"leased\": {\n                            \"count\": 37,\n                            \"mean\": 609,\n                            \"min\": 415,\n                            \"max\": 850,\n                            \"median\": 600,\n                            \"q1\": 550,\n                            \"q3\": 660,\n                            \"medianGrowth\": 0.043,\n                            \"domMedian\": 19,\n                            \"pageviewsMedian\": 1252,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 110\n                        },\n                        \"investment\": {\n                            \"yieldMedian\": 0.02882355451248133,\n                            \"yieldMean\": 0.031110898317142636,\n                            \"salePriceMedianGrowth12Month\": 0.036,\n                            \"salePriceMedianGrowth3Year\": 0.087,\n                            \"salePriceMedianCAGR3Year\": 0.028,\n                            \"salePriceMedianGrowth5Year\": 0.346,\n                            \"salePriceMedianCAGR5Year\": 0.061,\n                            \"salePriceMedianGrowth10Year\": 0.84,\n                            \"salePriceMedianCAGR10Year\": 0.063\n                        }\n                    },\n                    \"3\": {\n                        \"propertyType\": \"House\",\n                        \"bedrooms\": 3,\n                        \"sold\": {\n                            \"count\": 82,\n                            \"mean\": 1366158,\n                            \"min\": 850000,\n                            \"max\": 2600000,\n                            \"median\": 1317500,\n                            \"q1\": 1150000,\n                            \"q3\": 1500000,\n                            \"discountMedian\": 0,\n                            \"medianGrowth\": 0.067,\n                            \"domMedian\": 23,\n                            \"pageviewsMedian\": 4868,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 350000\n                        },\n                        \"leased\": {\n                            \"count\": 178,\n                            \"mean\": 803,\n                            \"min\": 375,\n                            \"max\": 1650,\n                            \"median\": 760,\n                            \"q1\": 700,\n                            \"q3\": 855,\n                            \"medianGrowth\": 0.086,\n                            \"domMedian\": 18,\n                            \"pageviewsMedian\": 1003,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 155\n                        },\n                        \"investment\": {\n                            \"yieldMedian\": 0.029996312939278718,\n                            \"yieldMean\": 0.030450475194108335,\n                            \"salePriceMedianGrowth12Month\": 0.067,\n                            \"salePriceMedianGrowth3Year\": 0.117,\n                            \"salePriceMedianCAGR3Year\": 0.037,\n                            \"salePriceMedianGrowth5Year\": 0.703,\n                            \"salePriceMedianCAGR5Year\": 0.112,\n                            \"salePriceMedianGrowth10Year\": 0.92,\n                            \"salePriceMedianCAGR10Year\": 0.067\n                        }\n                    },\n                    \"4\": {\n                        \"propertyType\": \"House\",\n                        \"bedrooms\": 4,\n                        \"sold\": {\n                            \"count\": 43,\n                            \"mean\": 1847604,\n                            \"min\": 915000,\n                            \"max\": 3500000,\n                            \"median\": 1775000,\n                            \"q1\": 1462500,\n                            \"q3\": 2082500,\n                            \"discountMedian\": 0,\n                            \"medianGrowth\": 0.003,\n                            \"domMedian\": 30,\n                            \"pageviewsMedian\": 4601,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 620000\n                        },\n                        \"leased\": {\n                            \"count\": 65,\n                            \"mean\": 1053,\n                            \"min\": 300,\n                            \"max\": 1750,\n                            \"median\": 1050,\n                            \"q1\": 900,\n                            \"q3\": 1200,\n                            \"medianGrowth\": 0.105,\n                            \"domMedian\": 23,\n                            \"pageviewsMedian\": 856,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 300\n                        },\n                        \"investment\": {\n                            \"yieldMedian\": 0.030766666666666664,\n                            \"yieldMean\": 0.03180606957384596,\n                            \"salePriceMedianGrowth12Month\": 0.003,\n                            \"salePriceMedianGrowth3Year\": 0.123,\n                            \"salePriceMedianCAGR3Year\": 0.04,\n                            \"salePriceMedianGrowth5Year\": 0.819,\n                            \"salePriceMedianCAGR5Year\": 0.127,\n                            \"salePriceMedianGrowth10Year\": 1.046,\n                            \"salePriceMedianCAGR10Year\": 0.074\n                        }\n                    },\n                    \"5\": {\n                        \"propertyType\": \"House\",\n                        \"bedrooms\": 5,\n                        \"sold\": {\n                            \"count\": 38,\n                            \"mean\": 2693592,\n                            \"min\": 1820000,\n                            \"max\": 5405000,\n                            \"median\": 2562500,\n                            \"q1\": 2300000,\n                            \"q3\": 2946250,\n                            \"discountMedian\": -0.0018867924528301887,\n                            \"medianGrowth\": 0.051,\n                            \"domMedian\": 25,\n                            \"pageviewsMedian\": 4861,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 646250\n                        },\n                        \"leased\": {\n                            \"count\": 17,\n                            \"mean\": 1365,\n                            \"min\": 800,\n                            \"max\": 2200,\n                            \"median\": 1250,\n                            \"q1\": 1197,\n                            \"q3\": 1500,\n                            \"medianGrowth\": 0.136,\n                            \"domMedian\": 17,\n                            \"pageviewsMedian\": 881,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 303\n                        },\n                        \"investment\": {\n                            \"yieldMedian\": 0.025366457262516656,\n                            \"yieldMean\": 0.02554363201979025,\n                            \"salePriceMedianGrowth12Month\": 0.051,\n                            \"salePriceMedianGrowth3Year\": 0.427,\n                            \"salePriceMedianCAGR3Year\": 0.126,\n                            \"salePriceMedianGrowth5Year\": 0.83,\n                            \"salePriceMedianCAGR5Year\": 0.129,\n                            \"salePriceMedianGrowth10Year\": 1.181,\n                            \"salePriceMedianCAGR10Year\": 0.081\n                        }\n                    }\n                },\n                \"unit\": {\n                    \"1\": {\n                        \"propertyType\": \"Unit\",\n                        \"bedrooms\": 1,\n                        \"sold\": {\n                            \"count\": 19,\n                            \"mean\": 561289,\n                            \"min\": 470000,\n                            \"max\": 655000,\n                            \"median\": 565000,\n                            \"q1\": 540000,\n                            \"q3\": 582500,\n                            \"discountMedian\": 0.13473375322072717,\n                            \"medianGrowth\": 0.314,\n                            \"domMedian\": 16,\n                            \"pageviewsMedian\": 2899,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 42500\n                        },\n                        \"leased\": {\n                            \"count\": 97,\n                            \"mean\": 472,\n                            \"min\": 300,\n                            \"max\": 600,\n                            \"median\": 475,\n                            \"q1\": 420,\n                            \"q3\": 536,\n                            \"medianGrowth\": 0.056,\n                            \"domMedian\": 12,\n                            \"pageviewsMedian\": 749,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 116\n                        },\n                        \"investment\": {\n                            \"yieldMedian\": 0.04371681415929204,\n                            \"yieldMean\": 0.04427559593023361,\n                            \"salePriceMedianGrowth12Month\": 0.314,\n                            \"salePriceMedianGrowth3Year\": 0.598,\n                            \"salePriceMedianCAGR3Year\": 0.169,\n                            \"salePriceMedianGrowth5Year\": 0.823,\n                            \"salePriceMedianCAGR5Year\": 0.128,\n                            \"salePriceMedianGrowth10Year\": 0.596,\n                            \"salePriceMedianCAGR10Year\": 0.048\n                        }\n                    },\n                    \"2\": {\n                        \"propertyType\": \"Unit\",\n                        \"bedrooms\": 2,\n                        \"sold\": {\n                            \"count\": 161,\n                            \"mean\": 718756,\n                            \"min\": 550000,\n                            \"max\": 1109000,\n                            \"median\": 705000,\n                            \"q1\": 669925,\n                            \"q3\": 760516,\n                            \"discountMedian\": 0.013793103448275862,\n                            \"medianGrowth\": 0.102,\n                            \"domMedian\": 19,\n                            \"pageviewsMedian\": 2557,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 90591\n                        },\n                        \"leased\": {\n                            \"count\": 437,\n                            \"mean\": 596,\n                            \"min\": 350,\n                            \"max\": 800,\n                            \"median\": 600,\n                            \"q1\": 530,\n                            \"q3\": 660,\n                            \"medianGrowth\": 0.091,\n                            \"domMedian\": 16,\n                            \"pageviewsMedian\": 920,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 130\n                        },\n                        \"investment\": {\n                            \"yieldMedian\": 0.04425531914893617,\n                            \"yieldMean\": 0.043851841563476136,\n                            \"salePriceMedianGrowth12Month\": 0.102,\n                            \"salePriceMedianGrowth3Year\": 0.424,\n                            \"salePriceMedianCAGR3Year\": 0.125,\n                            \"salePriceMedianGrowth5Year\": 0.893,\n                            \"salePriceMedianCAGR5Year\": 0.136,\n                            \"salePriceMedianGrowth10Year\": 0.838,\n                            \"salePriceMedianCAGR10Year\": 0.063\n                        }\n                    },\n                    \"3\": {\n                        \"propertyType\": \"Unit\",\n                        \"bedrooms\": 3,\n                        \"sold\": {\n                            \"count\": 24,\n                            \"mean\": 1080520,\n                            \"min\": 745000,\n                            \"max\": 2210000,\n                            \"median\": 970000,\n                            \"q1\": 871500,\n                            \"q3\": 1295000,\n                            \"discountMedian\": -0.02857142857142857,\n                            \"medianGrowth\": 0.136,\n                            \"domMedian\": 23,\n                            \"pageviewsMedian\": 3596,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 423500\n                        },\n                        \"leased\": {\n                            \"count\": 51,\n                            \"mean\": 735,\n                            \"min\": 430,\n                            \"max\": 1000,\n                            \"median\": 720,\n                            \"q1\": 650,\n                            \"q3\": 827,\n                            \"medianGrowth\": 0.051,\n                            \"domMedian\": 18,\n                            \"pageviewsMedian\": 1215,\n                            \"disclaimer\": \"Derived from publicly available listing data over a 12M period starting 2024-09-01\",\n                            \"iqr\": 177\n                        },\n                        \"investment\": {\n                            \"yieldMedian\": 0.038597938144329894,\n                            \"yieldMean\": 0.03700790739884944,\n                            \"salePriceMedianGrowth12Month\": 0.136,\n                            \"salePriceMedianGrowth3Year\": 0.459,\n                            \"salePriceMedianCAGR3Year\": 0.134,\n                            \"salePriceMedianGrowth5Year\": 1.042,\n                            \"salePriceMedianCAGR5Year\": 0.153,\n                            \"salePriceMedianGrowth10Year\": 1.029,\n                            \"salePriceMedianCAGR10Year\": 0.073\n                        }\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": {\n                    \"href\": \"https://api.nexu.com.au/suburb/coorparoo-qld-4151/statistics\"\n                }\n            }\n        },\n        \"demographics\": {\n            \"month\": \"2025-09\",\n            \"population\": {\n                \"total\": 18132,\n                \"populationGrowth1Year\": 0.021,\n                \"populationGrowth3Year\": 0.018,\n                \"populationGrowth5Year\": 0.051,\n                \"populationGrowth10Year\": 0.157,\n                \"age0to4Years\": 902,\n                \"age5to19Years\": 2719,\n                \"age20to24Years\": 5231,\n                \"age25to34Years\": 3661,\n                \"age35to44Years\": 2882,\n                \"age45to64Years\": 4142,\n                \"age65OrOverYears\": 2257,\n                \"medianMortgageRepayMonthly\": 2047,\n                \"medianRentWeekly\": 380,\n                \"medianHouseholdIncomeWeekly\": 2105,\n                \"occupationManagers\": 1622,\n                \"occupationProfessionals\": 4054,\n                \"occupationTechniciansAndTradeworkers\": 932,\n                \"occupationCommunityAndPersonalServiceWorkers\": 1102,\n                \"occupationClericalAndAdministrativeWorkers\": 1437,\n                \"occupationSalesWorkers\": 788,\n                \"occupationMachineryOperatorsAndDrivers\": 292,\n                \"occupationLabourers\": 605,\n                \"occupationInadequatelyDescribedOrNotStated\": 143,\n                \"commuteTrain\": 289,\n                \"commuteBusFerry\": 940,\n                \"commuteCarTruckMotorbike\": 5499,\n                \"commuteBike\": 177,\n                \"commuteWalk\": 224,\n                \"commuteOther\": 136,\n                \"commuteWFH\": 2498,\n                \"links\": {\n                    \"ABS:Census\": {\n                        \"href\": \"https://www.abs.gov.au/statistics/people\"\n                    },\n                    \"ABS:ERP\": {\n                        \"href\": \"https://www.abs.gov.au/statistics/people/population/regional-population\"\n                    }\n                },\n                \"disclaimer\": \"Source: ABS Census 2021 and Estimated Resident Population\"\n            },\n            \"housing\": {\n                \"totalPrivateDwellings\": 8765,\n                \"house\": {\n                    \"count\": 3984,\n                    \"ownedRatio\": 0.7406025824964132,\n                    \"rentedRatio\": 0.25624103299856527,\n                    \"buildingApprovals\": {\n                        \"count\": 41,\n                        \"value\": 45316000,\n                        \"ratio\": 0.01029,\n                        \"links\": {\n                            \"ABS:BA\": {\n                                \"href\": \"https://www.abs.gov.au/statistics/industry/building-and-construction/building-approvals-australia\"\n                            }\n                        },\n                        \"disclaimer\": \"Derived from the last 12m of Building Approvals for houses (SA2)\"\n                    }\n                },\n                \"unit\": {\n                    \"count\": 4765,\n                    \"ownedRatio\": 0.3481285988483685,\n                    \"rentedRatio\": 0.6477927063339731,\n                    \"buildingApprovals\": {\n                        \"count\": 11,\n                        \"value\": 10720000,\n                        \"ratio\": 0.00231,\n                        \"links\": {\n                            \"ABS:BA\": {\n                                \"href\": \"https://www.abs.gov.au/statistics/industry/building-and-construction/building-approvals-australia\"\n                            }\n                        },\n                        \"disclaimer\": \"Derived from the last 12m of Building Approvals for residential dwellings excluding houses (SA2)\"\n                    }\n                },\n                \"total\": {\n                    \"count\": 8765,\n                    \"ownedRatio\": 0.5236728837876614,\n                    \"rentedRatio\": 0.46654493282900744,\n                    \"socialHousingRatio\": 0.027520542585104994,\n                    \"buildingApprovals\": {\n                        \"publicHousing\": 0,\n                        \"valueNonResidential\": 20458000,\n                        \"valueNonResidentialPerCapita\": 1099,\n                        \"links\": {\n                            \"ABS:BA\": {\n                                \"href\": \"https://www.abs.gov.au/statistics/industry/building-and-construction/building-approvals-australia\"\n                            },\n                            \"ABS:ERP\": {\n                                \"href\": \"https://www.abs.gov.au/statistics/people/population/regional-population\"\n                            }\n                        },\n                        \"disclaimer\": \"Derived from the last 12m of Building Approvals and Estimated Resident Population\"\n                    }\n                }\n            },\n            \"seifa\": {\n                \"IEORankAustralia\": 97,\n                \"IEORankState\": 99,\n                \"IERRankAustralia\": 45,\n                \"IERRankState\": 50,\n                \"IRSADRankAustralia\": 95,\n                \"IRSADRankState\": 98,\n                \"IRSDRankAustralia\": 89,\n                \"IRSDRankState\": 95\n            },\n            \"links\": {\n                \"self\": {\n                    \"href\": \"https://api.nexu.com.au/suburbs/coorparoo-qld-4151/demographics\"\n                }\n            },\n            \"disclaimer\": \"Derived and extrapolated from ABS Census 2006-2021, Socio-Economic Indexes for Areas (SEIFA) 2021\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "suburbFilter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// ✅ Status code check\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// ✅ Recursive validator\r",
+							"function validateFields(obj, parentKey = \"\") {\r",
+							"    if (obj === null || obj === undefined) {\r",
+							"        pm.test(`Field ${parentKey} is null/undefined`, function () {\r",
+							"            pm.expect(obj).to.not.eql(null);\r",
+							"        });\r",
+							"        return;\r",
+							"    }\r",
+							"\r",
+							"    if (Array.isArray(obj)) {\r",
+							"        pm.test(`Array ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.an(\"array\");\r",
+							"        });\r",
+							"        obj.forEach((item, index) => {\r",
+							"            validateFields(item, `${parentKey}[${index}]`);\r",
+							"        });\r",
+							"    } else if (typeof obj === \"object\") {\r",
+							"        pm.test(`Object ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.an(\"object\");\r",
+							"        });\r",
+							"        Object.keys(obj).forEach(key => {\r",
+							"            validateFields(obj[key], parentKey ? `${parentKey}.${key}` : key);\r",
+							"        });\r",
+							"    } else if (typeof obj === \"string\") {\r",
+							"        pm.test(`String field ${parentKey} is not empty`, function () {\r",
+							"            pm.expect(obj).to.be.a(\"string\");\r",
+							"        });\r",
+							"    } else if (typeof obj === \"number\") {\r",
+							"        pm.test(`Number field ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.a(\"number\");\r",
+							"        });\r",
+							"    } else if (typeof obj === \"boolean\") {\r",
+							"        pm.test(`Boolean field ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.a(\"boolean\");\r",
+							"        });\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"// ✅ Run validator on the full response\r",
+							"validateFields(jsonData);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"filters\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"entities\": [],\n    \"indexName\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\",\n    \"spellCheck\": {\n        \"spellChanged\": false,\n        \"updatedText\": \"\",\n        \"actualText\": \"\"\n    },\n    \"metaData\": {\n        \"filters\": [],\n        \"choices\": [],\n        \"bucketSize\": 0,\n        \"entities\": [],\n        \"ignoreNLU\": false,\n        \"pageNumberChange\": false,\n        \"pageNumber\": 1,\n        \"pageSize\": 30,\n        \"freeText\": false,\n        \"queryCategory\": \"\",\n        \"isWakeWord\": false,\n        \"timezone\": \"Asia/Calcutta\",\n        \"searchQuery\": \"My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. \",\n        \"isVoiceQuery\": false,\n        \"isTyped\": true,\n        \"removedFilters\": []\n    },\n    \"utterance\": \"Provide on homes\",\n    \"user\": {\n        \"userAppId\": \"a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283\",\n        \"userId\": \"283\",\n        \"name\": \"Rebecca Moroney\",\n        \"accountId\": \"223\",\n        \"channelId\": \"wayIQMobile\",\n        \"trackId\": \"\",\n        \"requestId\": \"\",\n        \"parentId\": \"\",\n        \"email\": \"rm****au\",\n        \"locationId\": \"\"\n    },\n    \"clientDetails\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-nlp-url}}/suburbFilter",
+					"host": [
+						"{{base-nlp-url}}"
+					],
+					"path": [
+						"suburbFilter"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:9710/suburbFilter' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"filters\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"entities\": [],\n    \"indexName\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\",\n    \"spellCheck\": {\n        \"spellChanged\": false,\n        \"updatedText\": \"\",\n        \"actualText\": \"\"\n    },\n    \"metaData\": {\n        \"filters\": [],\n        \"choices\": [],\n        \"bucketSize\": 0,\n        \"entities\": [],\n        \"ignoreNLU\": false,\n        \"pageNumberChange\": false,\n        \"pageNumber\": 1,\n        \"pageSize\": 30,\n        \"freeText\": false,\n        \"queryCategory\": \"\",\n        \"isWakeWord\": false,\n        \"timezone\": \"Asia/Calcutta\",\n        \"searchQuery\": \"My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. \",\n        \"isVoiceQuery\": false,\n        \"isTyped\": true,\n        \"removedFilters\": []\n    },\n    \"utterance\": \"Provide on homes\",\n    \"user\": {\n        \"userAppId\": \"a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283\",\n        \"userId\": \"283\",\n        \"name\": \"Rebecca Moroney\",\n        \"accountId\": \"223\",\n        \"channelId\": \"wayIQMobile\",\n        \"trackId\": \"\",\n        \"requestId\": \"\",\n        \"parentId\": \"\",\n        \"email\": \"rm****au\",\n        \"locationId\": \"\"\n    },\n    \"clientDetails\": []\n}'"
+			},
+			"response": [
+				{
+					"name": "suburbFilter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filters\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"entities\": [],\n    \"indexName\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\",\n    \"spellCheck\": {\n        \"spellChanged\": false,\n        \"updatedText\": \"\",\n        \"actualText\": \"\"\n    },\n    \"metaData\": {\n        \"filters\": [],\n        \"choices\": [],\n        \"bucketSize\": 0,\n        \"entities\": [],\n        \"ignoreNLU\": false,\n        \"pageNumberChange\": false,\n        \"pageNumber\": 1,\n        \"pageSize\": 30,\n        \"freeText\": false,\n        \"queryCategory\": \"\",\n        \"isWakeWord\": false,\n        \"timezone\": \"Asia/Calcutta\",\n        \"searchQuery\": \"My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. \",\n        \"isVoiceQuery\": false,\n        \"isTyped\": true,\n        \"removedFilters\": []\n    },\n    \"utterance\": \"Provide on homes\",\n    \"user\": {\n        \"userAppId\": \"a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283\",\n        \"userId\": \"283\",\n        \"name\": \"Rebecca Moroney\",\n        \"accountId\": \"223\",\n        \"channelId\": \"wayIQMobile\",\n        \"trackId\": \"\",\n        \"requestId\": \"\",\n        \"parentId\": \"\",\n        \"email\": \"rm****au\",\n        \"locationId\": \"\"\n    },\n    \"clientDetails\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-nlp-url}}/suburbFilter",
+							"host": [
+								"{{base-nlp-url}}"
+							],
+							"path": [
+								"suburbFilter"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 17 Sep 2025 05:11:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "13"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "18"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "15"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "f9a53d74cc5f10167e53667c2ab23716"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"searchQuery\": \"Provide on homes\",\n    \"updatedFilter\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"filters\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"suburbLocations\": [\n        {\n            \"suburb\": \"melbourne\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "propertyFilter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// ✅ Status code check\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// ✅ Recursive validator\r",
+							"function validateFields(obj, parentKey = \"\") {\r",
+							"    if (obj === null || obj === undefined) {\r",
+							"        pm.test(`Field ${parentKey} is null/undefined`, function () {\r",
+							"            pm.expect(obj).to.not.eql(null);\r",
+							"        });\r",
+							"        return;\r",
+							"    }\r",
+							"\r",
+							"    if (Array.isArray(obj)) {\r",
+							"        pm.test(`Array ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.an(\"array\");\r",
+							"        });\r",
+							"        obj.forEach((item, index) => {\r",
+							"            validateFields(item, `${parentKey}[${index}]`);\r",
+							"        });\r",
+							"    } else if (typeof obj === \"object\") {\r",
+							"        pm.test(`Object ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.an(\"object\");\r",
+							"        });\r",
+							"        Object.keys(obj).forEach(key => {\r",
+							"            validateFields(obj[key], parentKey ? `${parentKey}.${key}` : key);\r",
+							"        });\r",
+							"    } else if (typeof obj === \"string\") {\r",
+							"        pm.test(`String field ${parentKey} is not empty`, function () {\r",
+							"            pm.expect(obj).to.be.a(\"string\");\r",
+							"        });\r",
+							"    } else if (typeof obj === \"number\") {\r",
+							"        pm.test(`Number field ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.a(\"number\");\r",
+							"        });\r",
+							"    } else if (typeof obj === \"boolean\") {\r",
+							"        pm.test(`Boolean field ${parentKey} is valid`, function () {\r",
+							"            pm.expect(obj).to.be.a(\"boolean\");\r",
+							"        });\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"// ✅ Run validator on the full response\r",
+							"validateFields(jsonData);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"filters\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"entities\": [],\n    \"indexName\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\",\n    \"spellCheck\": {\n        \"spellChanged\": false,\n        \"updatedText\": \"\",\n        \"actualText\": \"\"\n    },\n    \"metaData\": {\n        \"filters\": [],\n        \"choices\": [],\n        \"bucketSize\": 0,\n        \"entities\": [],\n        \"ignoreNLU\": false,\n        \"pageNumberChange\": false,\n        \"pageNumber\": 1,\n        \"pageSize\": 30,\n        \"freeText\": false,\n        \"queryCategory\": \"\",\n        \"isWakeWord\": false,\n        \"timezone\": \"Asia/Calcutta\",\n        \"searchQuery\": \"My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. \",\n        \"isVoiceQuery\": false,\n        \"isTyped\": true,\n        \"removedFilters\": []\n    },\n    \"utterance\": \"Provide on homes\",\n    \"user\": {\n        \"userAppId\": \"a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283\",\n        \"userId\": \"283\",\n        \"name\": \"Rebecca Moroney\",\n        \"accountId\": \"223\",\n        \"channelId\": \"wayIQMobile\",\n        \"trackId\": \"\",\n        \"requestId\": \"\",\n        \"parentId\": \"\",\n        \"email\": \"rm****au\",\n        \"locationId\": \"\"\n    },\n    \"clientDetails\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-nlp-url}}/propertyFilter",
+					"host": [
+						"{{base-nlp-url}}"
+					],
+					"path": [
+						"propertyFilter"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'http://localhost:9710/suburbFilter' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"filters\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"entities\": [],\n    \"indexName\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\",\n    \"spellCheck\": {\n        \"spellChanged\": false,\n        \"updatedText\": \"\",\n        \"actualText\": \"\"\n    },\n    \"metaData\": {\n        \"filters\": [],\n        \"choices\": [],\n        \"bucketSize\": 0,\n        \"entities\": [],\n        \"ignoreNLU\": false,\n        \"pageNumberChange\": false,\n        \"pageNumber\": 1,\n        \"pageSize\": 30,\n        \"freeText\": false,\n        \"queryCategory\": \"\",\n        \"isWakeWord\": false,\n        \"timezone\": \"Asia/Calcutta\",\n        \"searchQuery\": \"My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. \",\n        \"isVoiceQuery\": false,\n        \"isTyped\": true,\n        \"removedFilters\": []\n    },\n    \"utterance\": \"Provide on homes\",\n    \"user\": {\n        \"userAppId\": \"a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283\",\n        \"userId\": \"283\",\n        \"name\": \"Rebecca Moroney\",\n        \"accountId\": \"223\",\n        \"channelId\": \"wayIQMobile\",\n        \"trackId\": \"\",\n        \"requestId\": \"\",\n        \"parentId\": \"\",\n        \"email\": \"rm****au\",\n        \"locationId\": \"\"\n    },\n    \"clientDetails\": []\n}'"
+			},
+			"response": [
+				{
+					"name": "propertyFilter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filters\": {\n        \"action_filters\": [\n            \"create_collection\"\n        ],\n        \"domain_filters\": {\n            \"max_price\": 1000000,\n            \"property_features\": null,\n            \"listing_type\": \"Sale\",\n            \"property_types\": [\n                \"House\"\n            ]\n        },\n        \"demographic_filters\": {},\n        \"growth_filters\": {},\n        \"house_filters\": {},\n        \"location_filters\": {\n            \"stateterritory\": \"VIC\",\n            \"greater_capital_city_region\": \"Greater Melbourne\",\n            \"suburb\": [\n                \"melbourne\"\n            ],\n            \"lga\": \"\"\n        },\n        \"market_filters\": {\n            \"VacancyRate\": [\n                {\n                    \"value\": 0.05,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_filters\": {\n            \"Yield\": [\n                {\n                    \"value\": 0.04,\n                    \"comparison_type\": \"GreaterThan\"\n                }\n            ]\n        },\n        \"property_type_filter\": {\n            \"property_type\": \"House\"\n        },\n        \"school_filters\": {\n            \"SchoolScore\": []\n        },\n        \"seifa_filters\": {},\n        \"suburb_filters\": {\n            \"propertyType\": \"House\",\n            \"filters\": [\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.04,\n                    \"metric\": \"Yield\",\n                    \"includeUnknowns\": false\n                },\n                {\n                    \"@type\": \"AggregateMetric\",\n                    \"comparisonType\": \"GreaterThan\",\n                    \"value\": 0.05,\n                    \"metric\": \"VacancyRate\",\n                    \"includeUnknowns\": false\n                }\n            ],\n            \"limit\": 10,\n            \"criteria\": {\n                \"@type\": \"RegionId\",\n                \"regionType\": \"State\",\n                \"id\": \"VIC\"\n            }\n        }\n    },\n    \"entities\": [],\n    \"indexName\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\",\n    \"spellCheck\": {\n        \"spellChanged\": false,\n        \"updatedText\": \"\",\n        \"actualText\": \"\"\n    },\n    \"metaData\": {\n        \"filters\": [],\n        \"choices\": [],\n        \"bucketSize\": 0,\n        \"entities\": [],\n        \"ignoreNLU\": false,\n        \"pageNumberChange\": false,\n        \"pageNumber\": 1,\n        \"pageSize\": 30,\n        \"freeText\": false,\n        \"queryCategory\": \"\",\n        \"isWakeWord\": false,\n        \"timezone\": \"Asia/Calcutta\",\n        \"searchQuery\": \"My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. \",\n        \"isVoiceQuery\": false,\n        \"isTyped\": true,\n        \"removedFilters\": []\n    },\n    \"utterance\": \"Provide on homes\",\n    \"user\": {\n        \"userAppId\": \"a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283\",\n        \"userId\": \"283\",\n        \"name\": \"Rebecca Moroney\",\n        \"accountId\": \"223\",\n        \"channelId\": \"wayIQMobile\",\n        \"trackId\": \"\",\n        \"requestId\": \"\",\n        \"parentId\": \"\",\n        \"email\": \"rm****au\",\n        \"locationId\": \"\"\n    },\n    \"clientDetails\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-nlp-url}}/propertyFilter",
+							"host": [
+								"{{base-nlp-url}}"
+							],
+							"path": [
+								"propertyFilter"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 17 Sep 2025 05:14:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "1100"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "1101"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "11"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "c14a7e028fcb541213c75c7ef19f3147"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"rawProperties\": 500,\n    \"offmarketData\": [],\n    \"isElasticResponse\": false\n}"
+				}
+			]
+		}
+	]
+}
