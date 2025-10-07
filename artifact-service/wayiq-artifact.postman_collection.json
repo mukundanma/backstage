@@ -1,0 +1,1394 @@
+{
+	"info": {
+		"_postman_id": "896829f1-92a8-497b-8032-eda0815127ea",
+		"name": "LLM-ARTIFACT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43448221"
+	},
+	"item": [
+		{
+			"name": "health",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-artifact-url}}/health",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-artifact-url}}/health",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 30 May 2025 04:53:19 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-allow-headers",
+							"value": "X-Requested-With"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "15"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "25"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "127"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "26fb9223e16b496280d3b6334e137171"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"displayMessage\": \"Artifact service is up and running\",\n    \"internalErrorMessage\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "appid",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-artifact-url}}/appId",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"appId"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "appId",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-artifact-url}}/appId",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"appId"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 30 May 2025 04:55:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-allow-headers",
+							"value": "X-Requested-With"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "23"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "26"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "50"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "e4c48650274d183bdc1bd961a33aa353"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"appId\": \"wayiqb2f1c21b96f14fbfab7224a2aefd87\"\n}"
+				}
+			]
+		},
+		{
+			"name": "sampleQuery/{appId}",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-artifact-url}}/sampleQuery/wayiqb2f1c21b96f14fbfab7224a2aefd87",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"sampleQuery",
+						"wayiqb2f1c21b96f14fbfab7224a2aefd87"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sampleQuery/{appId}",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-artifact-url}}/sampleQuery/wayiqb2f1c21b96f14fbfab7224a2aefd87",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"sampleQuery",
+								"wayiqb2f1c21b96f14fbfab7224a2aefd87"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 30 May 2025 04:56:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-allow-headers",
+							"value": "X-Requested-With"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "19"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Kong-Upstream-Latency",
+							"value": "26"
+						},
+						{
+							"key": "X-Kong-Proxy-Latency",
+							"value": "63"
+						},
+						{
+							"key": "Via",
+							"value": "kong/3.7.1"
+						},
+						{
+							"key": "X-Kong-Request-Id",
+							"value": "936ced5daaf42914351b8f25dcc61c55"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "object-src 'none'; form-action 'self'; frame-ancestors 'self';"
+						},
+						{
+							"key": "Permissions-Policy",
+							"value": "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(),hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"try_me_questions\": [\n        {\n            \"index_id\": 1,\n            \"created_at\": \"2025-01-01T10:05:02.577328+00:00\",\n            \"created_by\": \"Nutcracker\",\n            \"created_by_email\": \"\",\n            \"is_system_generated\": true,\n            \"question\": \"Show me houses with 3+ bedrooms, 2 bathrooms, and 1+ car parking in suburbs within Greater Brisbane that have  high economic diversity, and include air conditioning and built-in wardrobes.\",\n            \"description\": null,\n            \"last_updated_at\": null,\n            \"last_updated_by\": null,\n            \"last_updated_by_email\": null,\n            \"original_question\": \"Show me houses with 3+ bedrooms, 2 bathrooms, and 1+ car parking in suburbs within Greater Brisbane that have  high economic diversity, and include air conditioning and built-in wardrobes.\",\n            \"is_deleted\": false\n        },\n        {\n            \"index_id\": 2,\n            \"created_at\": \"2025-01-01T10:05:02.577431+00:00\",\n            \"created_by\": \"Nutcracker\",\n            \"created_by_email\": \"\",\n            \"is_system_generated\": true,\n            \"question\": \"One of my customer is looking to purchase a property in Paddington. Can you create a proposal and send email including a property brief\",\n            \"description\": null,\n            \"last_updated_at\": null,\n            \"last_updated_by\": null,\n            \"last_updated_by_email\": null,\n            \"original_question\": \"One of my customer is looking to purchase a property in Paddington. Can you create a proposal and send email including a property brief\",\n            \"is_deleted\": false\n        },\n        {\n            \"index_id\": 3,\n            \"created_at\": \"2025-01-01T10:05:02.577470+00:00\",\n            \"created_by\": \"Nutcracker\",\n            \"created_by_email\": \"\",\n            \"is_system_generated\": true,\n            \"question\": \"What are the public transportation options available in Parramatta, including train stations and bus services?\",\n            \"description\": null,\n            \"last_updated_at\": null,\n            \"last_updated_by\": null,\n            \"last_updated_by_email\": null,\n            \"original_question\": \"What are the public transportation options available in Parramatta, including train stations and bus services?\",\n            \"is_deleted\": false\n        },\n        {\n            \"index_id\": 4,\n            \"created_at\": \"2025-01-01T10:05:02.577470+00:00\",\n            \"created_by\": \"Nutcracker\",\n            \"created_by_email\": \"\",\n            \"is_system_generated\": true,\n            \"question\": \"We're looking to downsize to a 2-bedroom apartment in a walkable suburb of Canberra, ACT. We'd like property with a balcony and secure parking. Our budget is $600,000. We would like to include surrounding suburbs as well within 40km radius\",\n            \"description\": null,\n            \"last_updated_at\": null,\n            \"last_updated_by\": null,\n            \"last_updated_by_email\": null,\n            \"original_question\": \"We're looking to downsize to a 2-bedroom apartment in a walkable suburb of Canberra, ACT. We'd like property with a balcony and secure parking. Our budget is $600,000. We would like to include surrounding suburbs as well within 40km radius\",\n            \"is_deleted\": false\n        },\n        {\n            \"index_id\": 5,\n            \"created_at\": \"2025-01-01T10:05:02.577470+00:00\",\n            \"created_by\": \"Nutcracker\",\n            \"created_by_email\": \"\",\n            \"is_system_generated\": true,\n            \"question\": \"What are the eligibility criteria to obtain an estate agent's license in Victoria?\",\n            \"description\": null,\n            \"last_updated_at\": null,\n            \"last_updated_by\": null,\n            \"last_updated_by_email\": null,\n            \"original_question\": \"What are the eligibility criteria to obtain an estate agent's license in Victoria?\",\n            \"is_deleted\": false\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "collection",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"collectionData\": [\r\n    {\r\n      \"queryConversationId\": \"string\",\r\n      \"dialogId\": \"string\",\r\n      \"shortlist_collections\": [\r\n        {\r\n          \"wq_row_id\": 0,\r\n          \"propertytype\": \"string\",\r\n          \"state\": \"string\",\r\n          \"bathrooms\": 0,\r\n          \"bedrooms\": 0,\r\n          \"carspaces\": 0,\r\n          \"streetnumber\": \"string\",\r\n          \"street\": \"string\",\r\n          \"area\": \"string\",\r\n          \"suburb\": \"string\",\r\n          \"postcode\": \"string\",\r\n          \"landareasqm\": 0,\r\n          \"region\": \"string\",\r\n          \"latitude\": 0,\r\n          \"longitude\": 0,\r\n          \"address\": \"string\",\r\n          \"postedon\": \"2025-05-30T04:49:19.235Z\",\r\n          \"inspecton\": \"2025-05-30T04:49:19.235Z\",\r\n          \"propertyimages\": \"string\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-artifact-url}}/collection",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"collection"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "collection",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"collectionData\": [\r\n    {\r\n      \"queryConversationId\": \"string\",\r\n      \"dialogId\": \"string\",\r\n      \"shortlist_collections\": [\r\n        {\r\n          \"wq_row_id\": 0,\r\n          \"propertytype\": \"string\",\r\n          \"state\": \"string\",\r\n          \"bathrooms\": 0,\r\n          \"bedrooms\": 0,\r\n          \"carspaces\": 0,\r\n          \"streetnumber\": \"string\",\r\n          \"street\": \"string\",\r\n          \"area\": \"string\",\r\n          \"suburb\": \"string\",\r\n          \"postcode\": \"string\",\r\n          \"landareasqm\": 0,\r\n          \"region\": \"string\",\r\n          \"latitude\": 0,\r\n          \"longitude\": 0,\r\n          \"address\": \"string\",\r\n          \"postedon\": \"2025-05-30T04:49:19.235Z\",\r\n          \"inspecton\": \"2025-05-30T04:49:19.235Z\",\r\n          \"propertyimages\": \"string\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-artifact-url}}/collection",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"collection"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"shortlistResponse\": {\n        \"status\": \"success\",\n        \"message\": \"The selected properties have been successfully added to the string\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "collection/search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"page_limit\": 50,\r\n  \"page_no\": 1,\r\n  \"search_term\": \"string\",\r\n  \"date_filter\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-artifact-url}}/collection/search",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"collection",
+						"search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "collection/search",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"page_limit\": 50,\r\n  \"page_no\": 1,\r\n  \"search_term\": \"string\",\r\n  \"date_filter\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-artifact-url}}/collection/search",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"collection",
+								"search"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n  \"collectionList\": [\n    {\n      \"utterance\": \"string\",\n      \"collectionName\": \"string\",\n      \"appId\": \"string\",\n      \"userId\": \"string\",\n      \"propertyIds\": [\n        0\n      ],\n      \"collectionImage\": \"string\",\n      \"isDeleted\": true,\n      \"createdOn\": \"2025-05-30T05:22:31.773Z\",\n      \"updatedOn\": \"2025-05-30T05:22:31.773Z\",\n      \"collectionId\": \"string\",\n      \"lastUpdatedTime\": \"2025-05-30T05:22:31.773Z\"\n    }\n  ],\n  \"totalCollectionCount\": 1,\n  \"reachedEnd\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "collection",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					},
+					{
+						"key": "collectionName",
+						"value": "coll_20250530060549",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "288",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-artifact-url}}/collection",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"collection"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "collection(get)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "288",
+								"type": "text"
+							},
+							{
+								"key": "collectionName",
+								"value": "artifact",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-artifact-url}}/collection",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"collection"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"shortlistCollection\": {\n        \"status\": \"string\",\n        \"data\": [\n            {\n                \"_id\": \"string\",\n                \"utterance\": \"string\",\n                \"collectionName\": \"string\",\n                \"appId\": \"string\",\n                \"userId\": [\n                    \"string\"\n                ],\n                \"propertyIds\": [\n                    0\n                ],\n                \"collectionImage\": \"string\",\n                \"isDeleted\": true,\n                \"createdOn\": \"2025-05-30T05:11:44.509Z\",\n                \"updatedOn\": \"2025-05-30T05:11:44.509Z\",\n                \"collectionId\": \"string\",\n                \"proposalCount\": 0,\n                \"collectionData\": [\n                    {\n                        \"queryConversationId\": \"string\",\n                        \"dialogId\": \"string\",\n                        \"shortlist_collections\": [\n                            {\n                                \"wq_row_id\": 0,\n                                \"typical_price\": 0,\n                                \"min_price\": 0,\n                                \"max_price\": 0,\n                                \"propertytype\": \"string\",\n                                \"state\": \"string\",\n                                \"bathrooms\": 0,\n                                \"bedrooms\": 0,\n                                \"carspaces\": 0,\n                                \"streetnumber\": \"string\",\n                                \"street\": \"string\",\n                                \"area\": \"string\",\n                                \"suburb\": \"string\",\n                                \"postcode\": \"string\",\n                                \"region\": \"string\",\n                                \"latitude\": 0,\n                                \"longitude\": 0,\n                                \"address\": \"string\",\n                                \"postedon\": \"2025-05-30T05:11:44.509Z\",\n                                \"inspecton\": \"string\",\n                                \"propertyimages\": \"string\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "collection",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"collectionId\": \"string\",\r\n  \"collectionData\": [\r\n    {}\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-artifact-url}}/collection",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"collection"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "collection (put)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"collectionId\": \"string\",\r\n  \"collectionData\": [\r\n    {}\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-artifact-url}}/collection",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"collection"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"shortlistResponse\": {\n        \"status\": \"string\",\n        \"message\": \"string\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "collection",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+						"type": "text"
+					},
+					{
+						"key": "collectionName",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-artifact-url}}/collection",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"collection"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "collection(delete)",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NTcsXCJuYW1lXCI6XCJIYXJpIFByYXNhdGggVCAxMjNcIixcInNvY2lhbFJlZ1wiOnRydWUsXCJ0ZW5hbnRMaXN0XCI6W3tcInRlbmFudE5hbWVcIjpcInNhcmF2YW5hbi5tQHB1cnBsZXNsYXRlLmluXCIsXCJpc1RlbmFudE93bmVyXCI6ZmFsc2UsXCJ0ZW5hbnRJZFwiOjU3fV0sXCJlbWFpbElkXCI6XCJoYXJpcHJhc2F0aC50QHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IGFkbWluXCIsXCJsb2NhdGlvbklkXCI6XCJSSmZxT21SbFdRek1jVUJoa1lDNlwiLFwidXNlcklkXCI6XCIzblRpTDA1SDFFbUk3a1o1UnY0YVwifSxcIm1vYmlsZU5vXCI6XCIrOTE4NzU0NzIyOTAzXCIsXCJ1c2VySWRcIjoxMjB9IiwiZXhwIjoxNzQ5NzA4NTczLCJpc3MiOiIyVk5pQkNEUXZiQ2RiQWI0U3JodVJCdGlhZ21YWHlaUCJ9.80AsxuZg5OqFof5Au0g7hjvh0qMtfGgqkhzn-6u_pXw",
+								"type": "text"
+							},
+							{
+								"key": "collectionName",
+								"value": "artifact",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "288",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-artifact-url}}/collection",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"collection"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"collectionDeleteResponse\": {\n        \"status\": \"string\",\n        \"message\": \"string\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "proposal",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"collectionData\": [\r\n    {\r\n      \"queryConversationId\": \"string\",\r\n      \"dialogId\": \"string\",\r\n      \"shortlist_collections\": [\r\n        {\r\n          \"wq_row_id\": 0,\r\n          \"propertytype\": \"string\",\r\n          \"state\": \"string\",\r\n          \"bathrooms\": 0,\r\n          \"bedrooms\": 0,\r\n          \"carspaces\": 0,\r\n          \"streetnumber\": \"string\",\r\n          \"street\": \"string\",\r\n          \"area\": \"string\",\r\n          \"suburb\": \"string\",\r\n          \"postcode\": \"string\",\r\n          \"landareasqm\": 0,\r\n          \"region\": \"string\",\r\n          \"latitude\": 0,\r\n          \"longitude\": 0,\r\n          \"address\": \"string\",\r\n          \"postedon\": \"2025-05-30T05:30:02.458Z\",\r\n          \"inspecton\": \"2025-05-30T05:30:02.458Z\",\r\n          \"propertyimages\": \"string\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"emails\": [\r\n    \"user@example.com\"\r\n  ],\r\n  \"createdBy\": \"string\",\r\n  \"authToken\": \"string\",\r\n  \"token\": \"string\",\r\n  \"apiKey\": \"string\",\r\n  \"proposalName\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-artifact-url}}/proposal",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"proposal"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "proposal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"collectionData\": [\r\n    {\r\n      \"queryConversationId\": \"string\",\r\n      \"dialogId\": \"string\",\r\n      \"shortlist_collections\": [\r\n        {\r\n          \"wq_row_id\": 0,\r\n          \"propertytype\": \"string\",\r\n          \"state\": \"string\",\r\n          \"bathrooms\": 0,\r\n          \"bedrooms\": 0,\r\n          \"carspaces\": 0,\r\n          \"streetnumber\": \"string\",\r\n          \"street\": \"string\",\r\n          \"area\": \"string\",\r\n          \"suburb\": \"string\",\r\n          \"postcode\": \"string\",\r\n          \"landareasqm\": 0,\r\n          \"region\": \"string\",\r\n          \"latitude\": 0,\r\n          \"longitude\": 0,\r\n          \"address\": \"string\",\r\n          \"postedon\": \"2025-05-30T05:30:02.458Z\",\r\n          \"inspecton\": \"2025-05-30T05:30:02.458Z\",\r\n          \"propertyimages\": \"string\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"emails\": [\r\n    \"user@example.com\"\r\n  ],\r\n  \"createdBy\": \"string\",\r\n  \"authToken\": \"string\",\r\n  \"token\": \"string\",\r\n  \"apiKey\": \"string\",\r\n  \"proposalName\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-artifact-url}}/proposal",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"proposal"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Your proposal is being processed!\",\n    \"proposalId\": \"c34c34c1-3034-44e5-85f3-bf40ef112ee9\"\n}"
+				}
+			]
+		},
+		{
+			"name": "proposal /preview",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"type\": \"string\",\r\n  \"collectionData\": [\r\n    {\r\n      \"queryConversationId\": \"string\",\r\n      \"dialogId\": \"string\",\r\n      \"shortlist_collections\": [\r\n        {\r\n          \"wq_row_id\": 0,\r\n          \"propertytype\": \"string\",\r\n          \"state\": \"string\",\r\n          \"bathrooms\": 0,\r\n          \"bedrooms\": 0,\r\n          \"carspaces\": 0,\r\n          \"streetnumber\": \"string\",\r\n          \"street\": \"string\",\r\n          \"area\": \"string\",\r\n          \"suburb\": \"string\",\r\n          \"postcode\": \"string\",\r\n          \"landareasqm\": 0,\r\n          \"region\": \"string\",\r\n          \"latitude\": 0,\r\n          \"longitude\": 0,\r\n          \"address\": \"string\",\r\n          \"postedon\": \"2025-05-30T06:22:00.012Z\",\r\n          \"inspecton\": \"2025-05-30T06:22:00.012Z\",\r\n          \"propertyimages\": \"string\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"emails\": [\r\n    \"user@example.com\"\r\n  ],\r\n  \"createdBy\": \"string\",\r\n  \"authToken\": \"string\",\r\n  \"token\": \"string\",\r\n  \"apiKey\": \"string\",\r\n  \"proposalName\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-artifact-url}}/proposal/preview",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"proposal",
+						"preview"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "proposal/preview",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"utterance\": \"string\",\r\n  \"collectionName\": \"string\",\r\n  \"appId\": \"string\",\r\n  \"userId\": [\r\n    \"string\"\r\n  ],\r\n  \"type\": \"string\",\r\n  \"collectionData\": [\r\n    {\r\n      \"queryConversationId\": \"string\",\r\n      \"dialogId\": \"string\",\r\n      \"shortlist_collections\": [\r\n        {\r\n          \"wq_row_id\": 0,\r\n          \"propertytype\": \"string\",\r\n          \"state\": \"string\",\r\n          \"bathrooms\": 0,\r\n          \"bedrooms\": 0,\r\n          \"carspaces\": 0,\r\n          \"streetnumber\": \"string\",\r\n          \"street\": \"string\",\r\n          \"area\": \"string\",\r\n          \"suburb\": \"string\",\r\n          \"postcode\": \"string\",\r\n          \"landareasqm\": 0,\r\n          \"region\": \"string\",\r\n          \"latitude\": 0,\r\n          \"longitude\": 0,\r\n          \"address\": \"string\",\r\n          \"postedon\": \"2025-05-30T06:22:00.012Z\",\r\n          \"inspecton\": \"2025-05-30T06:22:00.012Z\",\r\n          \"propertyimages\": \"string\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"emails\": [\r\n    \"user@example.com\"\r\n  ],\r\n  \"createdBy\": \"string\",\r\n  \"authToken\": \"string\",\r\n  \"token\": \"string\",\r\n  \"apiKey\": \"string\",\r\n  \"proposalName\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-artifact-url}}/proposal/preview",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"proposal",
+								"preview"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n  \"status\": \"success\",\n  \"message\": \"Your proposal is being processed!\",\n  \"proposalId\": \"c34c34c1-3034-44e5-85f3-bf40ef112ee9\"\n}"
+				}
+			]
+		},
+		{
+			"name": "proposal",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					},
+					{
+						"key": "collectionname",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-artifact-url}}/proposal",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"proposal"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "proposal",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							},
+							{
+								"key": "collectionName",
+								"value": "coll_20250530060549",
+								"type": "text"
+							},
+							{
+								"key": "userId",
+								"value": "288",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-artifact-url}}/proposal",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"proposal"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"shortlistCollection\": {\n        \"status\": \"string\",\n        \"data\": [\n            {\n                \"_id\": \"string\",\n                \"utterance\": \"string\",\n                \"collectionName\": \"string\",\n                \"appId\": \"string\",\n                \"userId\": [\n                    \"string\"\n                ],\n                \"propertyIds\": [\n                    0\n                ],\n                \"collectionImage\": \"string\",\n                \"isDeleted\": true,\n                \"createdOn\": \"2025-05-30T06:07:20.570Z\",\n                \"updatedOn\": \"2025-05-30T06:07:20.570Z\",\n                \"collectionId\": \"string\",\n                \"proposalCount\": 0,\n                \"collectionData\": [\n                    {\n                        \"queryConversationId\": \"string\",\n                        \"dialogId\": \"string\",\n                        \"shortlist_collections\": [\n                            {\n                                \"wq_row_id\": 0,\n                                \"typical_price\": 0,\n                                \"min_price\": 0,\n                                \"max_price\": 0,\n                                \"propertytype\": \"string\",\n                                \"state\": \"string\",\n                                \"bathrooms\": 0,\n                                \"bedrooms\": 0,\n                                \"carspaces\": 0,\n                                \"streetnumber\": \"string\",\n                                \"street\": \"string\",\n                                \"area\": \"string\",\n                                \"suburb\": \"string\",\n                                \"postcode\": \"string\",\n                                \"region\": \"string\",\n                                \"latitude\": 0,\n                                \"longitude\": 0,\n                                \"address\": \"string\",\n                                \"postedon\": \"2025-05-30T06:07:20.570Z\",\n                                \"inspecton\": \"string\",\n                                \"propertyimages\": \"string\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "proposal",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"proposalId\": \"string\",\r\n  \"proposalName\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-artifact-url}}/proposal",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"proposal"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "proposal",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"proposalId\": \"string\",\r\n  \"proposalName\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-artifact-url}}/proposal",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"proposal"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n    \"proposalResponse\": {\n        \"status\": \"string\",\n        \"message\": \"string\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "proposal",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					},
+					{
+						"key": "proposalId",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base-artifact-url}}/proposal",
+					"host": [
+						"{{base-artifact-url}}"
+					],
+					"path": [
+						"proposal"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "proposal",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "auth-token",
+								"value": "{{auth-dev-token}}",
+								"type": "text"
+							},
+							{
+								"key": "proposalId",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-artifact-url}}/proposal",
+							"host": [
+								"{{base-artifact-url}}"
+							],
+							"path": [
+								"proposal"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"domain": "",
+							"path": ""
+						}
+					],
+					"body": "{\n  \"proposalDeleteResponse\": {\n    \"status\": \"string\",\n    \"message\": \"string\"\n  }\n}"
+				}
+			]
+		}
+	]
+}
