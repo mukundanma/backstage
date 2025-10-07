@@ -4,6 +4,7 @@ metadata:
   name: all-api-collections
   description: Central registry of all Postman collections
 spec:
+  type: dir
   targets:
-    - ./artifact-service/catalog-info.yaml
-    - ./nlp-service/catalog-info.yaml
+    - ./artifact-service
+    - ./nlp-service
