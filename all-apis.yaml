@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: example-apis
+  description: A collection of all Backstage example APIs
+spec:
+  targets:
+    - ./apis/arifact-openapi.yaml
+    - ./apis/auth-openai.yaml
+    - ./apis/inference-openai.yaml
+    - ./apis/llm-orch-openai.yaml
+    - ./apis/nlp-openapi.yaml
+    - ./apis/ui-service-openapi.yaml
