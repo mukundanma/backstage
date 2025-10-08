@@ -3,16 +3,6 @@ kind: API
 metadata:
   name: artifact
   description: The Artifact API
-  tags:
-    - store
-    - rest
-  links:
-    - url: https://github.com/mukundanma/backstage
-      title: GitHub Repo
-      icon: github
-    - url: https://github.com/mukundanma/backstage/blob/main/apis/arifact-openapi.yaml
-      title: API Spec
-      icon: code
 spec:
   type: openapi
   lifecycle: experimental
