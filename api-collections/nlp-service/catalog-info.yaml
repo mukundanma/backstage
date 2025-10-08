@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: user-service-api
-  description: User Service APIs
+  name: nlp-service-api
+  description: NLP Service APIs
   tags:
     - postman
     - internal
@@ -12,4 +12,4 @@ spec:
   owner: team-user
   system: core-platform
   definition:
-    $text: ./wayiq-nlp.postman_collection.json
+    $text: ./nlp-openapi.yaml

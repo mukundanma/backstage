@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: inference-service-api
-  description: Inference Service APIs
+  name: ui-service-api
+  description: UI Service APIs
   tags:
     - postman
     - internal
@@ -12,4 +12,4 @@ spec:
   owner: team-user
   system: core-platform
   definition:
-    $text: ./inference-openai.yaml
+    $text: ./ui-service-openapi.yaml

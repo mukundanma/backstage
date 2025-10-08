@@ -12,4 +12,4 @@ spec:
   owner: team-user
   system: core-platform
   definition:
-    $text: ./wayiq-llm-orchestration.postman_collection.json
+    $text: ./llm-orch-openai.yaml
