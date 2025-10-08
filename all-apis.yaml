@@ -7,7 +7,7 @@ spec:
   targets:
     - ./api-collections/artifact-service/arifact-openapi.yaml
     - ./api-collections/auth-service/auth-openai.yaml
-    - ./api-collections/llm-inference-service/inference-openai.yaml
+    - ./api-collections/llm-inference/inference-openai.yaml
     - ./api-collections/llm-orch-service/llm-orch-openai.yaml
     - ./api-collections/nlp-service/nlp-openapi.yaml
     - ./api-collections/ui-service/ui-service-openapi.yaml
