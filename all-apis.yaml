@@ -1,4 +1,4 @@
-apiVersion: studentopro/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
   name: realestate-apis
