@@ -1,0 +1,1853 @@
+openapi: 3.0.0
+info:
+  title: NLP Service
+  version: 1.0.0
+servers:
+  - url: http://{{base-nlp-url}}
+paths:
+  /waytask/createjob:
+    post:
+      tags:
+        - default
+      summary: createjob
+      description: >-
+        Generated from cURL: curl --location
+        'https://api-wayiq.dev.purplescape.com/api/v1/wsc-wayiq-nlp/waytask/createjob'
+        \
+
+        --header 'userId: 582' \
+
+        --header 'auth-token:
+        eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiOTQ3NjQxOTgtYTgyMC00OTBhLTkxNDQtNzU0NzUyZGQxYjVmXCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTc3NzUxNzAsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.XvMZw4onv8VGaB9eQ91GlZRzd2kzpwiMZy4R9aIqvqo'
+        \
+
+        --header 'Content-Type: application/json' \
+
+        --data '{
+            "service": "schedule_photoshoot",
+            "collectionName": "coll_20250904142257",
+            "propertyDetails": {
+                "wq_row_id": 2020246120,
+                "propertytype": "ApartmentUnitFlat",
+                "state": "VIC",
+                "bathrooms": 2,
+                "bedrooms": 2,
+                "carspaces": 1,
+                "streetnumber": "68",
+                "street": "Cambridge Street",
+                "area": "Yarra City Council - Greater Area",
+                "suburb": "COLLINGWOOD",
+                "postcode": "3066",
+                "region": "Melbourne Region",
+                "latitude": -37.8067856,
+                "longitude": 144.985367,
+                "address": "414/68 Cambridge Street, Collingwood",
+                "postedon": "2025-09-04T12:02:11",
+                "inspecton": "",
+                "propertyimages": "https://bucket-api.domain.com.au/v1/bucket/image/2020246120_1_1_250904_020210-w1600-h1067/800x600,h…,
+                "sellerAgentDetails": {
+                    "type": "Agency",
+                    "id": 4718,
+                    "name": "Nelson Alexander Fitzroy",
+                    "logoUrl": "https://images.domain.com.au/img/Agencys/4718/logo_4718.jpeg",
+                    "preferredColourHex": "#1e0f14",
+                    "bannerUrl": "https://images.domain.com.au/img/Agencys/4718/banner_4718.jpeg",
+                    "contacts": [
+                        {
+                            "name": "James McCulloch",
+                            "photoUrl": "https://images.domain.com.au/img/4718/contact_1782374.jpeg?mod=250908-145124"
+                        },
+                        {
+                            "name": "Rick Daniel",
+                            "photoUrl": "https://images.domain.com.au/img/4718/contact_972465.jpeg?mod=250908-145124"
+                        }
+                    ]
+                },
+                "propertyDescription": "<b></b>
+        Designer edge in the heart of the action\n\nLive at the heart of
+        Collingwood'\''s creative pulse in this refined residence, set within an
+        award-winning building by world-renowned architect John Wardle. Designed
+        for both elegance and ease, the t...",
+                "source": "domain"
+            }
+        }'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                service: schedule_photoshoot
+                collectionName: coll_20250904142257
+                propertyDetails:
+                  wq_row_id: 2020246120
+                  propertytype: ApartmentUnitFlat
+                  state: VIC
+                  bathrooms: 2
+                  bedrooms: 2
+                  carspaces: 1
+                  streetnumber: '68'
+                  street: Cambridge Street
+                  area: Yarra City Council - Greater Area
+                  suburb: COLLINGWOOD
+                  postcode: '3066'
+                  region: Melbourne Region
+                  latitude: -37.8067856
+                  longitude: 144.985367
+                  address: 414/68 Cambridge Street, Collingwood
+                  postedon: '2025-09-04T12:02:11'
+                  inspecton: ''
+                  propertyimages: >-
+                    https://bucket-api.domain.com.au/v1/bucket/image/2020246120_1_1_250904_020210-w1600-h1067/800x600
+                  sellerAgentDetails:
+                    type: Agency
+                    id: 4718
+                    name: Nelson Alexander Fitzroy
+                    logoUrl: >-
+                      https://images.domain.com.au/img/Agencys/4718/logo_4718.jpeg
+                    preferredColourHex: '#1e0f14'
+                    bannerUrl: >-
+                      https://images.domain.com.au/img/Agencys/4718/banner_4718.jpeg
+                    contacts:
+                      - name: James McCulloch
+                        photoUrl: >-
+                          https://images.domain.com.au/img/4718/contact_1782374.jpeg?mod=250908-145124
+                      - name: Rick Daniel
+                        photoUrl: >-
+                          https://images.domain.com.au/img/4718/contact_972465.jpeg?mod=250908-145124
+                  propertyDescription: |-
+                    <b></b>
+                    Designer edge in the heart of the action
+
+                    Live at the heart of Collingwood's creative pulse...
+                  source: domain
+      parameters:
+        - name: userId
+          in: header
+          schema:
+            type: integer
+          example: '582'
+        - name: auth-token
+          in: header
+          schema:
+            type: number
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Sep 2025 05:07:05 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '271'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '275'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '20'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: c2fb22172347263500ca7d71f8d2533f
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "status": "success",
+                    "data": {
+                        "message": "Draft has been created successfully",
+                        "draftId": "2620"
+                    }
+                }
+  /crm/notes:
+    post:
+      tags:
+        - default
+      summary: notes
+      description: >-
+        Generated from cURL: curl --location 'http://localhost:9710/crm/notes' \
+
+        --header 'auth-token:
+        eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjVlZmZhZjUtOTg2ZC00ODM5LWIzYTctN2I5OWU5MTA4MjRkXCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwMjU5NDYsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.0pturYm4Xw3b4zABGxKviLptIlq1P22qlB9Q2VLaUXc'
+        \
+
+        --header 'userId: 582' \
+
+        --header 'tenantId: 610' \
+
+        --header 'Content-Type: application/json' \
+
+        --data '{
+            "category": "property_requirements",
+            "notes": "2 bedroom, 2 carspaces apartments in Sydney",
+            "contactId": "7qHCoBxuKCSOkSbVgqmD"
+        }'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                category: property_requirements
+                notes: 2 bedroom, 2 carspaces apartments in Sydney
+                contactId: 7qHCoBxuKCSOkSbVgqmD
+      parameters:
+        - name: auth-token
+          in: header
+          schema:
+            type: number
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc
+        - name: userId
+          in: header
+          schema:
+            type: integer
+          example: '582'
+        - name: tenantId
+          in: header
+          schema:
+            type: integer
+          example: '610'
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /crm/property/requirements:
+    get:
+      tags:
+        - default
+      summary: contactId
+      description: >-
+        Generated from cURL: curl --location
+        'http://localhost:9710/crm/property/requirements?contactId=7qHCoBxuKCSOkSbVgqmD'
+        \
+
+        --header 'userId: 582' \
+
+        --header 'auth-token:
+        eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjVlZmZhZjUtOTg2ZC00ODM5LWIzYTctN2I5OWU5MTA4MjRkXCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwMjU5NDYsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.0pturYm4Xw3b4zABGxKviLptIlq1P22qlB9Q2VLaUXc'
+        \
+
+        --header 'tenantId: 610' \
+
+        --data ''
+      parameters:
+        - name: userId
+          in: header
+          schema:
+            type: string
+          example: '{{user_id}}'
+        - name: auth-token
+          in: header
+          schema:
+            type: number
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc
+        - name: tenantId
+          in: header
+          schema:
+            type: integer
+          example: '610'
+        - name: contactId
+          in: query
+          schema:
+            type: string
+          example: 7qHCoBxuKCSOkSbVgqmD
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /suburb:
+    post:
+      tags:
+        - default
+      summary: suburb_details
+      description: >-
+        Generated from cURL: curl --location
+        'http://localhost:9710/suburbFilter' \
+
+        --header 'Content-Type: application/json' \
+
+        --data '{
+            "suburb":"collingwood"
+        }'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                suburb: coorparoo-qld-4151
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: number
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Sep 2025 05:12:57 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '723'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '727'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '16'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: a355c06638e5fc22cd11130f4e5fee67
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "status": "success",
+                    "suburbDetails": {
+                        "statistics": {
+                            "house": {
+                                "propertyType": "House",
+                                "sold": {
+                                    "count": 185,
+                                    "mean": 1788773,
+                                    "min": 692500,
+                                    "max": 5405000,
+                                    "median": 1587500,
+                                    "q1": 1267500,
+                                    "q3": 2181250,
+                                    "discountMedian": 0,
+                                    "medianGrowth": 0.058,
+                                    "domMedian": 24,
+                                    "pageviewsMedian": 4778,
+                                    "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                    "iqr": 913750
+                                },
+                                "leased": {
+                                    "count": 309,
+                                    "mean": 856,
+                                    "min": 195,
+                                    "max": 2200,
+                                    "median": 800,
+                                    "q1": 675,
+                                    "q3": 972,
+                                    "medianGrowth": 0.067,
+                                    "domMedian": 19,
+                                    "pageviewsMedian": 1002,
+                                    "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                    "iqr": 297
+                                },
+                                "forSale": {
+                                    "count": 67,
+                                    "disclaimer": "Derived from publicly available listing data during Jun 2025"
+                                },
+                                "forRent": {
+                                    "count": 32,
+                                    "disclaimer": "Derived from publicly available rental data during Jun 2025"
+                                },
+                                "investment": {
+                                    "yieldMedian": 0.028760263732893778,
+                                    "yieldMean": 0.029503809236483346,
+                                    "vacancyRate": 0.0143,
+                                    "marketAbsorptionRate": 0.44776119402985076,
+                                    "stockOnMarket": 0.0077,
+                                    "salePriceMedianGrowth12Month": 0.058,
+                                    "salePriceMedianGrowth3Year": 0.191,
+                                    "salePriceMedianCAGR3Year": 0.06,
+                                    "salePriceMedianGrowth5Year": 0.817,
+                                    "salePriceMedianCAGR5Year": 0.127,
+                                    "salePriceMedianGrowth10Year": 1.048,
+                                    "salePriceMedianCAGR10Year": 0.074,
+                                    "auctionClearanceRate": 0.52,
+                                    "newListings": 27,
+                                    "newRentals": 22
+                                }
+                            },
+                            "unit": {
+                                "propertyType": "Unit",
+                                "sold": {
+                                    "count": 205,
+                                    "mean": 761779,
+                                    "min": 470000,
+                                    "max": 3805000,
+                                    "median": 707955,
+                                    "q1": 653750,
+                                    "q3": 780000,
+                                    "discountMedian": 0.013390058217644425,
+                                    "medianGrowth": 0.115,
+                                    "domMedian": 19,
+                                    "pageviewsMedian": 2782,
+                                    "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                    "iqr": 126250
+                                },
+                                "leased": {
+                                    "count": 587,
+                                    "mean": 591,
+                                    "min": 300,
+                                    "max": 1700,
+                                    "median": 582,
+                                    "q1": 515,
+                                    "q3": 660,
+                                    "medianGrowth": 0.059,
+                                    "domMedian": 15,
+                                    "pageviewsMedian": 934,
+                                    "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                    "iqr": 145
+                                },
+                                "forSale": {
+                                    "count": 22,
+                                    "disclaimer": "Derived from publicly available listing data during Jun 2025"
+                                },
+                                "forRent": {
+                                    "count": 65,
+                                    "disclaimer": "Derived from publicly available rental data during Jun 2025"
+                                },
+                                "investment": {
+                                    "yieldMedian": 0.04363636363636364,
+                                    "yieldMean": 0.043082368228586236,
+                                    "vacancyRate": 0.0115,
+                                    "marketAbsorptionRate": 0.6818181818181818,
+                                    "stockOnMarket": 0.0025,
+                                    "salePriceMedianGrowth12Month": 0.115,
+                                    "salePriceMedianGrowth3Year": 0.46,
+                                    "salePriceMedianCAGR3Year": 0.134,
+                                    "salePriceMedianGrowth5Year": 0.888,
+                                    "salePriceMedianCAGR5Year": 0.136,
+                                    "salePriceMedianGrowth10Year": 0.844,
+                                    "salePriceMedianCAGR10Year": 0.063,
+                                    "newListings": 13,
+                                    "newRentals": 52
+                                }
+                            },
+                            "bedrooms": {
+                                "house": {
+                                    "2": {
+                                        "propertyType": "House",
+                                        "bedrooms": 2,
+                                        "sold": {
+                                            "count": 14,
+                                            "mean": 1087535,
+                                            "min": 692500,
+                                            "max": 1800000,
+                                            "median": 1082500,
+                                            "q1": 797500,
+                                            "q3": 1201250,
+                                            "discountMedian": 0.09,
+                                            "medianGrowth": 0.036,
+                                            "domMedian": 16,
+                                            "pageviewsMedian": 5875,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 403750
+                                        },
+                                        "leased": {
+                                            "count": 37,
+                                            "mean": 609,
+                                            "min": 415,
+                                            "max": 850,
+                                            "median": 600,
+                                            "q1": 550,
+                                            "q3": 660,
+                                            "medianGrowth": 0.043,
+                                            "domMedian": 19,
+                                            "pageviewsMedian": 1252,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 110
+                                        },
+                                        "investment": {
+                                            "yieldMedian": 0.02882355451248133,
+                                            "yieldMean": 0.031110898317142636,
+                                            "salePriceMedianGrowth12Month": 0.036,
+                                            "salePriceMedianGrowth3Year": 0.087,
+                                            "salePriceMedianCAGR3Year": 0.028,
+                                            "salePriceMedianGrowth5Year": 0.346,
+                                            "salePriceMedianCAGR5Year": 0.061,
+                                            "salePriceMedianGrowth10Year": 0.84,
+                                            "salePriceMedianCAGR10Year": 0.063
+                                        }
+                                    },
+                                    "3": {
+                                        "propertyType": "House",
+                                        "bedrooms": 3,
+                                        "sold": {
+                                            "count": 82,
+                                            "mean": 1366158,
+                                            "min": 850000,
+                                            "max": 2600000,
+                                            "median": 1317500,
+                                            "q1": 1150000,
+                                            "q3": 1500000,
+                                            "discountMedian": 0,
+                                            "medianGrowth": 0.067,
+                                            "domMedian": 23,
+                                            "pageviewsMedian": 4868,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 350000
+                                        },
+                                        "leased": {
+                                            "count": 178,
+                                            "mean": 803,
+                                            "min": 375,
+                                            "max": 1650,
+                                            "median": 760,
+                                            "q1": 700,
+                                            "q3": 855,
+                                            "medianGrowth": 0.086,
+                                            "domMedian": 18,
+                                            "pageviewsMedian": 1003,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 155
+                                        },
+                                        "investment": {
+                                            "yieldMedian": 0.029996312939278718,
+                                            "yieldMean": 0.030450475194108335,
+                                            "salePriceMedianGrowth12Month": 0.067,
+                                            "salePriceMedianGrowth3Year": 0.117,
+                                            "salePriceMedianCAGR3Year": 0.037,
+                                            "salePriceMedianGrowth5Year": 0.703,
+                                            "salePriceMedianCAGR5Year": 0.112,
+                                            "salePriceMedianGrowth10Year": 0.92,
+                                            "salePriceMedianCAGR10Year": 0.067
+                                        }
+                                    },
+                                    "4": {
+                                        "propertyType": "House",
+                                        "bedrooms": 4,
+                                        "sold": {
+                                            "count": 43,
+                                            "mean": 1847604,
+                                            "min": 915000,
+                                            "max": 3500000,
+                                            "median": 1775000,
+                                            "q1": 1462500,
+                                            "q3": 2082500,
+                                            "discountMedian": 0,
+                                            "medianGrowth": 0.003,
+                                            "domMedian": 30,
+                                            "pageviewsMedian": 4601,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 620000
+                                        },
+                                        "leased": {
+                                            "count": 65,
+                                            "mean": 1053,
+                                            "min": 300,
+                                            "max": 1750,
+                                            "median": 1050,
+                                            "q1": 900,
+                                            "q3": 1200,
+                                            "medianGrowth": 0.105,
+                                            "domMedian": 23,
+                                            "pageviewsMedian": 856,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 300
+                                        },
+                                        "investment": {
+                                            "yieldMedian": 0.030766666666666664,
+                                            "yieldMean": 0.03180606957384596,
+                                            "salePriceMedianGrowth12Month": 0.003,
+                                            "salePriceMedianGrowth3Year": 0.123,
+                                            "salePriceMedianCAGR3Year": 0.04,
+                                            "salePriceMedianGrowth5Year": 0.819,
+                                            "salePriceMedianCAGR5Year": 0.127,
+                                            "salePriceMedianGrowth10Year": 1.046,
+                                            "salePriceMedianCAGR10Year": 0.074
+                                        }
+                                    },
+                                    "5": {
+                                        "propertyType": "House",
+                                        "bedrooms": 5,
+                                        "sold": {
+                                            "count": 38,
+                                            "mean": 2693592,
+                                            "min": 1820000,
+                                            "max": 5405000,
+                                            "median": 2562500,
+                                            "q1": 2300000,
+                                            "q3": 2946250,
+                                            "discountMedian": -0.0018867924528301887,
+                                            "medianGrowth": 0.051,
+                                            "domMedian": 25,
+                                            "pageviewsMedian": 4861,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 646250
+                                        },
+                                        "leased": {
+                                            "count": 17,
+                                            "mean": 1365,
+                                            "min": 800,
+                                            "max": 2200,
+                                            "median": 1250,
+                                            "q1": 1197,
+                                            "q3": 1500,
+                                            "medianGrowth": 0.136,
+                                            "domMedian": 17,
+                                            "pageviewsMedian": 881,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 303
+                                        },
+                                        "investment": {
+                                            "yieldMedian": 0.025366457262516656,
+                                            "yieldMean": 0.02554363201979025,
+                                            "salePriceMedianGrowth12Month": 0.051,
+                                            "salePriceMedianGrowth3Year": 0.427,
+                                            "salePriceMedianCAGR3Year": 0.126,
+                                            "salePriceMedianGrowth5Year": 0.83,
+                                            "salePriceMedianCAGR5Year": 0.129,
+                                            "salePriceMedianGrowth10Year": 1.181,
+                                            "salePriceMedianCAGR10Year": 0.081
+                                        }
+                                    }
+                                },
+                                "unit": {
+                                    "1": {
+                                        "propertyType": "Unit",
+                                        "bedrooms": 1,
+                                        "sold": {
+                                            "count": 19,
+                                            "mean": 561289,
+                                            "min": 470000,
+                                            "max": 655000,
+                                            "median": 565000,
+                                            "q1": 540000,
+                                            "q3": 582500,
+                                            "discountMedian": 0.13473375322072717,
+                                            "medianGrowth": 0.314,
+                                            "domMedian": 16,
+                                            "pageviewsMedian": 2899,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 42500
+                                        },
+                                        "leased": {
+                                            "count": 97,
+                                            "mean": 472,
+                                            "min": 300,
+                                            "max": 600,
+                                            "median": 475,
+                                            "q1": 420,
+                                            "q3": 536,
+                                            "medianGrowth": 0.056,
+                                            "domMedian": 12,
+                                            "pageviewsMedian": 749,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 116
+                                        },
+                                        "investment": {
+                                            "yieldMedian": 0.04371681415929204,
+                                            "yieldMean": 0.04427559593023361,
+                                            "salePriceMedianGrowth12Month": 0.314,
+                                            "salePriceMedianGrowth3Year": 0.598,
+                                            "salePriceMedianCAGR3Year": 0.169,
+                                            "salePriceMedianGrowth5Year": 0.823,
+                                            "salePriceMedianCAGR5Year": 0.128,
+                                            "salePriceMedianGrowth10Year": 0.596,
+                                            "salePriceMedianCAGR10Year": 0.048
+                                        }
+                                    },
+                                    "2": {
+                                        "propertyType": "Unit",
+                                        "bedrooms": 2,
+                                        "sold": {
+                                            "count": 161,
+                                            "mean": 718756,
+                                            "min": 550000,
+                                            "max": 1109000,
+                                            "median": 705000,
+                                            "q1": 669925,
+                                            "q3": 760516,
+                                            "discountMedian": 0.013793103448275862,
+                                            "medianGrowth": 0.102,
+                                            "domMedian": 19,
+                                            "pageviewsMedian": 2557,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 90591
+                                        },
+                                        "leased": {
+                                            "count": 437,
+                                            "mean": 596,
+                                            "min": 350,
+                                            "max": 800,
+                                            "median": 600,
+                                            "q1": 530,
+                                            "q3": 660,
+                                            "medianGrowth": 0.091,
+                                            "domMedian": 16,
+                                            "pageviewsMedian": 920,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 130
+                                        },
+                                        "investment": {
+                                            "yieldMedian": 0.04425531914893617,
+                                            "yieldMean": 0.043851841563476136,
+                                            "salePriceMedianGrowth12Month": 0.102,
+                                            "salePriceMedianGrowth3Year": 0.424,
+                                            "salePriceMedianCAGR3Year": 0.125,
+                                            "salePriceMedianGrowth5Year": 0.893,
+                                            "salePriceMedianCAGR5Year": 0.136,
+                                            "salePriceMedianGrowth10Year": 0.838,
+                                            "salePriceMedianCAGR10Year": 0.063
+                                        }
+                                    },
+                                    "3": {
+                                        "propertyType": "Unit",
+                                        "bedrooms": 3,
+                                        "sold": {
+                                            "count": 24,
+                                            "mean": 1080520,
+                                            "min": 745000,
+                                            "max": 2210000,
+                                            "median": 970000,
+                                            "q1": 871500,
+                                            "q3": 1295000,
+                                            "discountMedian": -0.02857142857142857,
+                                            "medianGrowth": 0.136,
+                                            "domMedian": 23,
+                                            "pageviewsMedian": 3596,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 423500
+                                        },
+                                        "leased": {
+                                            "count": 51,
+                                            "mean": 735,
+                                            "min": 430,
+                                            "max": 1000,
+                                            "median": 720,
+                                            "q1": 650,
+                                            "q3": 827,
+                                            "medianGrowth": 0.051,
+                                            "domMedian": 18,
+                                            "pageviewsMedian": 1215,
+                                            "disclaimer": "Derived from publicly available listing data over a 12M period starting 2024-09-01",
+                                            "iqr": 177
+                                        },
+                                        "investment": {
+                                            "yieldMedian": 0.038597938144329894,
+                                            "yieldMean": 0.03700790739884944,
+                                            "salePriceMedianGrowth12Month": 0.136,
+                                            "salePriceMedianGrowth3Year": 0.459,
+                                            "salePriceMedianCAGR3Year": 0.134,
+                                            "salePriceMedianGrowth5Year": 1.042,
+                                            "salePriceMedianCAGR5Year": 0.153,
+                                            "salePriceMedianGrowth10Year": 1.029,
+                                            "salePriceMedianCAGR10Year": 0.073
+                                        }
+                                    }
+                                }
+                            },
+                            "links": {
+                                "self": {
+                                    "href": "https://api.nexu.com.au/suburb/coorparoo-qld-4151/statistics"
+                                }
+                            }
+                        },
+                        "demographics": {
+                            "month": "2025-09",
+                            "population": {
+                                "total": 18132,
+                                "populationGrowth1Year": 0.021,
+                                "populationGrowth3Year": 0.018,
+                                "populationGrowth5Year": 0.051,
+                                "populationGrowth10Year": 0.157,
+                                "age0to4Years": 902,
+                                "age5to19Years": 2719,
+                                "age20to24Years": 5231,
+                                "age25to34Years": 3661,
+                                "age35to44Years": 2882,
+                                "age45to64Years": 4142,
+                                "age65OrOverYears": 2257,
+                                "medianMortgageRepayMonthly": 2047,
+                                "medianRentWeekly": 380,
+                                "medianHouseholdIncomeWeekly": 2105,
+                                "occupationManagers": 1622,
+                                "occupationProfessionals": 4054,
+                                "occupationTechniciansAndTradeworkers": 932,
+                                "occupationCommunityAndPersonalServiceWorkers": 1102,
+                                "occupationClericalAndAdministrativeWorkers": 1437,
+                                "occupationSalesWorkers": 788,
+                                "occupationMachineryOperatorsAndDrivers": 292,
+                                "occupationLabourers": 605,
+                                "occupationInadequatelyDescribedOrNotStated": 143,
+                                "commuteTrain": 289,
+                                "commuteBusFerry": 940,
+                                "commuteCarTruckMotorbike": 5499,
+                                "commuteBike": 177,
+                                "commuteWalk": 224,
+                                "commuteOther": 136,
+                                "commuteWFH": 2498,
+                                "links": {
+                                    "ABS:Census": {
+                                        "href": "https://www.abs.gov.au/statistics/people"
+                                    },
+                                    "ABS:ERP": {
+                                        "href": "https://www.abs.gov.au/statistics/people/population/regional-population"
+                                    }
+                                },
+                                "disclaimer": "Source: ABS Census 2021 and Estimated Resident Population"
+                            },
+                            "housing": {
+                                "totalPrivateDwellings": 8765,
+                                "house": {
+                                    "count": 3984,
+                                    "ownedRatio": 0.7406025824964132,
+                                    "rentedRatio": 0.25624103299856527,
+                                    "buildingApprovals": {
+                                        "count": 41,
+                                        "value": 45316000,
+                                        "ratio": 0.01029,
+                                        "links": {
+                                            "ABS:BA": {
+                                                "href": "https://www.abs.gov.au/statistics/industry/building-and-construction/building-approvals-australia"
+                                            }
+                                        },
+                                        "disclaimer": "Derived from the last 12m of Building Approvals for houses (SA2)"
+                                    }
+                                },
+                                "unit": {
+                                    "count": 4765,
+                                    "ownedRatio": 0.3481285988483685,
+                                    "rentedRatio": 0.6477927063339731,
+                                    "buildingApprovals": {
+                                        "count": 11,
+                                        "value": 10720000,
+                                        "ratio": 0.00231,
+                                        "links": {
+                                            "ABS:BA": {
+                                                "href": "https://www.abs.gov.au/statistics/industry/building-and-construction/building-approvals-australia"
+                                            }
+                                        },
+                                        "disclaimer": "Derived from the last 12m of Building Approvals for residential dwellings excluding houses (SA2)"
+                                    }
+                                },
+                                "total": {
+                                    "count": 8765,
+                                    "ownedRatio": 0.5236728837876614,
+                                    "rentedRatio": 0.46654493282900744,
+                                    "socialHousingRatio": 0.027520542585104994,
+                                    "buildingApprovals": {
+                                        "publicHousing": 0,
+                                        "valueNonResidential": 20458000,
+                                        "valueNonResidentialPerCapita": 1099,
+                                        "links": {
+                                            "ABS:BA": {
+                                                "href": "https://www.abs.gov.au/statistics/industry/building-and-construction/building-approvals-australia"
+                                            },
+                                            "ABS:ERP": {
+                                                "href": "https://www.abs.gov.au/statistics/people/population/regional-population"
+                                            }
+                                        },
+                                        "disclaimer": "Derived from the last 12m of Building Approvals and Estimated Resident Population"
+                                    }
+                                }
+                            },
+                            "seifa": {
+                                "IEORankAustralia": 97,
+                                "IEORankState": 99,
+                                "IERRankAustralia": 45,
+                                "IERRankState": 50,
+                                "IRSADRankAustralia": 95,
+                                "IRSADRankState": 98,
+                                "IRSDRankAustralia": 89,
+                                "IRSDRankState": 95
+                            },
+                            "links": {
+                                "self": {
+                                    "href": "https://api.nexu.com.au/suburbs/coorparoo-qld-4151/demographics"
+                                }
+                            },
+                            "disclaimer": "Derived and extrapolated from ABS Census 2006-2021, Socio-Economic Indexes for Areas (SEIFA) 2021"
+                        }
+                    }
+                }
+  /suburbFilter:
+    post:
+      tags:
+        - default
+      summary: suburbFilter
+      description: >-
+        Generated from cURL: curl --location
+        'http://localhost:9710/suburbFilter' \
+
+        --header 'Content-Type: application/json' \
+
+        --data-raw '{
+            "filters": {
+                "action_filters": [
+                    "create_collection"
+                ],
+                "domain_filters": {
+                    "max_price": 1000000,
+                    "property_features": null,
+                    "listing_type": "Sale",
+                    "property_types": [
+                        "House"
+                    ]
+                },
+                "demographic_filters": {},
+                "growth_filters": {},
+                "house_filters": {},
+                "location_filters": {
+                    "stateterritory": "VIC",
+                    "greater_capital_city_region": "Greater Melbourne",
+                    "suburb": [
+                        "melbourne"
+                    ],
+                    "lga": ""
+                },
+                "market_filters": {
+                    "VacancyRate": [
+                        {
+                            "value": 0.05,
+                            "comparison_type": "GreaterThan"
+                        }
+                    ]
+                },
+                "property_filters": {
+                    "Yield": [
+                        {
+                            "value": 0.04,
+                            "comparison_type": "GreaterThan"
+                        }
+                    ]
+                },
+                "property_type_filter": {
+                    "property_type": "House"
+                },
+                "school_filters": {
+                    "SchoolScore": []
+                },
+                "seifa_filters": {},
+                "suburb_filters": {
+                    "propertyType": "House",
+                    "filters": [
+                        {
+                            "@type": "AggregateMetric",
+                            "comparisonType": "GreaterThan",
+                            "value": 0.04,
+                            "metric": "Yield",
+                            "includeUnknowns": false
+                        },
+                        {
+                            "@type": "AggregateMetric",
+                            "comparisonType": "GreaterThan",
+                            "value": 0.05,
+                            "metric": "VacancyRate",
+                            "includeUnknowns": false
+                        }
+                    ],
+                    "limit": 10,
+                    "criteria": {
+                        "@type": "RegionId",
+                        "regionType": "State",
+                        "id": "VIC"
+                    }
+                }
+            },
+            "entities": [],
+            "indexName": "wayiqb2f1c21b96f14fbfab7224a2aefd87",
+            "spellCheck": {
+                "spellChanged": false,
+                "updatedText": "",
+                "actualText": ""
+            },
+            "metaData": {
+                "filters": [],
+                "choices": [],
+                "bucketSize": 0,
+                "entities": [],
+                "ignoreNLU": false,
+                "pageNumberChange": false,
+                "pageNumber": 1,
+                "pageSize": 30,
+                "freeText": false,
+                "queryCategory": "",
+                "isWakeWord": false,
+                "timezone": "Asia/Calcutta",
+                "searchQuery": "My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. ",
+                "isVoiceQuery": false,
+                "isTyped": true,
+                "removedFilters": []
+            },
+            "utterance": "Provide on homes",
+            "user": {
+                "userAppId": "a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283",
+                "userId": "283",
+                "name": "Rebecca Moroney",
+                "accountId": "223",
+                "channelId": "wayIQMobile",
+                "trackId": "",
+                "requestId": "",
+                "parentId": "",
+                "email": "rm****au",
+                "locationId": ""
+            },
+            "clientDetails": []
+        }'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                filters:
+                  action_filters:
+                    - create_collection
+                  domain_filters:
+                    max_price: 1000000
+                    property_features: null
+                    listing_type: Sale
+                    property_types:
+                      - House
+                  demographic_filters: {}
+                  growth_filters: {}
+                  house_filters: {}
+                  location_filters:
+                    stateterritory: VIC
+                    greater_capital_city_region: Greater Melbourne
+                    suburb:
+                      - melbourne
+                    lga: ''
+                  market_filters:
+                    VacancyRate:
+                      - value: 0.05
+                        comparison_type: GreaterThan
+                  property_filters:
+                    Yield:
+                      - value: 0.04
+                        comparison_type: GreaterThan
+                  property_type_filter:
+                    property_type: House
+                  school_filters:
+                    SchoolScore: []
+                  seifa_filters: {}
+                  suburb_filters:
+                    propertyType: House
+                    filters:
+                      - '@type': AggregateMetric
+                        comparisonType: GreaterThan
+                        value: 0.04
+                        metric: Yield
+                        includeUnknowns: false
+                      - '@type': AggregateMetric
+                        comparisonType: GreaterThan
+                        value: 0.05
+                        metric: VacancyRate
+                        includeUnknowns: false
+                    limit: 10
+                    criteria:
+                      '@type': RegionId
+                      regionType: State
+                      id: VIC
+                entities: []
+                indexName: wayiqb2f1c21b96f14fbfab7224a2aefd87
+                spellCheck:
+                  spellChanged: false
+                  updatedText: ''
+                  actualText: ''
+                metaData:
+                  filters: []
+                  choices: []
+                  bucketSize: 0
+                  entities: []
+                  ignoreNLU: false
+                  pageNumberChange: false
+                  pageNumber: 1
+                  pageSize: 30
+                  freeText: false
+                  queryCategory: ''
+                  isWakeWord: false
+                  timezone: Asia/Calcutta
+                  searchQuery: >-
+                    My budget is $1mil and I need properties in VIC with over 4%
+                    yield and over 5% capital growth. Show me options.
+                  isVoiceQuery: false
+                  isTyped: true
+                  removedFilters: []
+                utterance: Provide on homes
+                user:
+                  userAppId: >-
+                    a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283
+                  userId: '283'
+                  name: Rebecca Moroney
+                  accountId: '223'
+                  channelId: wayIQMobile
+                  trackId: ''
+                  requestId: ''
+                  parentId: ''
+                  email: rm****au
+                  locationId: ''
+                clientDetails: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: number
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Sep 2025 05:11:01 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '13'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '18'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '15'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: f9a53d74cc5f10167e53667c2ab23716
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "searchQuery": "Provide on homes",
+                    "updatedFilter": {
+                        "action_filters": [
+                            "create_collection"
+                        ],
+                        "domain_filters": {
+                            "max_price": 1000000,
+                            "property_features": null,
+                            "listing_type": "Sale",
+                            "property_types": [
+                                "House"
+                            ]
+                        },
+                        "demographic_filters": {},
+                        "growth_filters": {},
+                        "house_filters": {},
+                        "location_filters": {
+                            "stateterritory": "VIC",
+                            "greater_capital_city_region": "Greater Melbourne",
+                            "suburb": [
+                                "melbourne"
+                            ],
+                            "lga": ""
+                        },
+                        "market_filters": {
+                            "VacancyRate": [
+                                {
+                                    "value": 0.05,
+                                    "comparison_type": "GreaterThan"
+                                }
+                            ]
+                        },
+                        "property_filters": {
+                            "Yield": [
+                                {
+                                    "value": 0.04,
+                                    "comparison_type": "GreaterThan"
+                                }
+                            ]
+                        },
+                        "property_type_filter": {
+                            "property_type": "House"
+                        },
+                        "school_filters": {
+                            "SchoolScore": []
+                        },
+                        "seifa_filters": {},
+                        "suburb_filters": {
+                            "propertyType": "House",
+                            "filters": [
+                                {
+                                    "@type": "AggregateMetric",
+                                    "comparisonType": "GreaterThan",
+                                    "value": 0.04,
+                                    "metric": "Yield",
+                                    "includeUnknowns": false
+                                },
+                                {
+                                    "@type": "AggregateMetric",
+                                    "comparisonType": "GreaterThan",
+                                    "value": 0.05,
+                                    "metric": "VacancyRate",
+                                    "includeUnknowns": false
+                                }
+                            ],
+                            "limit": 10,
+                            "criteria": {
+                                "@type": "RegionId",
+                                "regionType": "State",
+                                "id": "VIC"
+                            }
+                        }
+                    },
+                    "filters": {
+                        "action_filters": [
+                            "create_collection"
+                        ],
+                        "domain_filters": {
+                            "max_price": 1000000,
+                            "property_features": null,
+                            "listing_type": "Sale",
+                            "property_types": [
+                                "House"
+                            ]
+                        },
+                        "demographic_filters": {},
+                        "growth_filters": {},
+                        "house_filters": {},
+                        "location_filters": {
+                            "stateterritory": "VIC",
+                            "greater_capital_city_region": "Greater Melbourne",
+                            "suburb": [
+                                "melbourne"
+                            ],
+                            "lga": ""
+                        },
+                        "market_filters": {
+                            "VacancyRate": [
+                                {
+                                    "value": 0.05,
+                                    "comparison_type": "GreaterThan"
+                                }
+                            ]
+                        },
+                        "property_filters": {
+                            "Yield": [
+                                {
+                                    "value": 0.04,
+                                    "comparison_type": "GreaterThan"
+                                }
+                            ]
+                        },
+                        "property_type_filter": {
+                            "property_type": "House"
+                        },
+                        "school_filters": {
+                            "SchoolScore": []
+                        },
+                        "seifa_filters": {},
+                        "suburb_filters": {
+                            "propertyType": "House",
+                            "filters": [
+                                {
+                                    "@type": "AggregateMetric",
+                                    "comparisonType": "GreaterThan",
+                                    "value": 0.04,
+                                    "metric": "Yield",
+                                    "includeUnknowns": false
+                                },
+                                {
+                                    "@type": "AggregateMetric",
+                                    "comparisonType": "GreaterThan",
+                                    "value": 0.05,
+                                    "metric": "VacancyRate",
+                                    "includeUnknowns": false
+                                }
+                            ],
+                            "limit": 10,
+                            "criteria": {
+                                "@type": "RegionId",
+                                "regionType": "State",
+                                "id": "VIC"
+                            }
+                        }
+                    },
+                    "suburbLocations": [
+                        {
+                            "suburb": "melbourne"
+                        }
+                    ]
+                }
+  /propertyFilter:
+    post:
+      tags:
+        - default
+      summary: propertyFilter
+      description: >-
+        Generated from cURL: curl --location
+        'http://localhost:9710/suburbFilter' \
+
+        --header 'Content-Type: application/json' \
+
+        --data-raw '{
+            "filters": {
+                "action_filters": [
+                    "create_collection"
+                ],
+                "domain_filters": {
+                    "max_price": 1000000,
+                    "property_features": null,
+                    "listing_type": "Sale",
+                    "property_types": [
+                        "House"
+                    ]
+                },
+                "demographic_filters": {},
+                "growth_filters": {},
+                "house_filters": {},
+                "location_filters": {
+                    "stateterritory": "VIC",
+                    "greater_capital_city_region": "Greater Melbourne",
+                    "suburb": [
+                        "melbourne"
+                    ],
+                    "lga": ""
+                },
+                "market_filters": {
+                    "VacancyRate": [
+                        {
+                            "value": 0.05,
+                            "comparison_type": "GreaterThan"
+                        }
+                    ]
+                },
+                "property_filters": {
+                    "Yield": [
+                        {
+                            "value": 0.04,
+                            "comparison_type": "GreaterThan"
+                        }
+                    ]
+                },
+                "property_type_filter": {
+                    "property_type": "House"
+                },
+                "school_filters": {
+                    "SchoolScore": []
+                },
+                "seifa_filters": {},
+                "suburb_filters": {
+                    "propertyType": "House",
+                    "filters": [
+                        {
+                            "@type": "AggregateMetric",
+                            "comparisonType": "GreaterThan",
+                            "value": 0.04,
+                            "metric": "Yield",
+                            "includeUnknowns": false
+                        },
+                        {
+                            "@type": "AggregateMetric",
+                            "comparisonType": "GreaterThan",
+                            "value": 0.05,
+                            "metric": "VacancyRate",
+                            "includeUnknowns": false
+                        }
+                    ],
+                    "limit": 10,
+                    "criteria": {
+                        "@type": "RegionId",
+                        "regionType": "State",
+                        "id": "VIC"
+                    }
+                }
+            },
+            "entities": [],
+            "indexName": "wayiqb2f1c21b96f14fbfab7224a2aefd87",
+            "spellCheck": {
+                "spellChanged": false,
+                "updatedText": "",
+                "actualText": ""
+            },
+            "metaData": {
+                "filters": [],
+                "choices": [],
+                "bucketSize": 0,
+                "entities": [],
+                "ignoreNLU": false,
+                "pageNumberChange": false,
+                "pageNumber": 1,
+                "pageSize": 30,
+                "freeText": false,
+                "queryCategory": "",
+                "isWakeWord": false,
+                "timezone": "Asia/Calcutta",
+                "searchQuery": "My budget is $1mil and I need properties in VIC with over 4% yield and over 5% capital growth. Show me options. ",
+                "isVoiceQuery": false,
+                "isTyped": true,
+                "removedFilters": []
+            },
+            "utterance": "Provide on homes",
+            "user": {
+                "userAppId": "a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283",
+                "userId": "283",
+                "name": "Rebecca Moroney",
+                "accountId": "223",
+                "channelId": "wayIQMobile",
+                "trackId": "",
+                "requestId": "",
+                "parentId": "",
+                "email": "rm****au",
+                "locationId": ""
+            },
+            "clientDetails": []
+        }'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                filters:
+                  action_filters:
+                    - create_collection
+                  domain_filters:
+                    max_price: 1000000
+                    property_features: null
+                    listing_type: Sale
+                    property_types:
+                      - House
+                  demographic_filters: {}
+                  growth_filters: {}
+                  house_filters: {}
+                  location_filters:
+                    stateterritory: VIC
+                    greater_capital_city_region: Greater Melbourne
+                    suburb:
+                      - melbourne
+                    lga: ''
+                  market_filters:
+                    VacancyRate:
+                      - value: 0.05
+                        comparison_type: GreaterThan
+                  property_filters:
+                    Yield:
+                      - value: 0.04
+                        comparison_type: GreaterThan
+                  property_type_filter:
+                    property_type: House
+                  school_filters:
+                    SchoolScore: []
+                  seifa_filters: {}
+                  suburb_filters:
+                    propertyType: House
+                    filters:
+                      - '@type': AggregateMetric
+                        comparisonType: GreaterThan
+                        value: 0.04
+                        metric: Yield
+                        includeUnknowns: false
+                      - '@type': AggregateMetric
+                        comparisonType: GreaterThan
+                        value: 0.05
+                        metric: VacancyRate
+                        includeUnknowns: false
+                    limit: 10
+                    criteria:
+                      '@type': RegionId
+                      regionType: State
+                      id: VIC
+                entities: []
+                indexName: wayiqb2f1c21b96f14fbfab7224a2aefd87
+                spellCheck:
+                  spellChanged: false
+                  updatedText: ''
+                  actualText: ''
+                metaData:
+                  filters: []
+                  choices: []
+                  bucketSize: 0
+                  entities: []
+                  ignoreNLU: false
+                  pageNumberChange: false
+                  pageNumber: 1
+                  pageSize: 30
+                  freeText: false
+                  queryCategory: ''
+                  isWakeWord: false
+                  timezone: Asia/Calcutta
+                  searchQuery: >-
+                    My budget is $1mil and I need properties in VIC with over 4%
+                    yield and over 5% capital growth. Show me options.
+                  isVoiceQuery: false
+                  isTyped: true
+                  removedFilters: []
+                utterance: Provide on homes
+                user:
+                  userAppId: >-
+                    a57167b9-adc5-45c8-b7a9-01cc4ac2f3f9||wayiqb2f1c21b96f14fbfab7224a2aefd87||283
+                  userId: '283'
+                  name: Rebecca Moroney
+                  accountId: '223'
+                  channelId: wayIQMobile
+                  trackId: ''
+                  requestId: ''
+                  parentId: ''
+                  email: rm****au
+                  locationId: ''
+                clientDetails: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: number
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6NjEwfV0sXCJpc0Jpb21ldHJpY0VuYWxlZFwiOnRydWUsXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInNlc3Npb25JZFwiOlwiNjFmMjllZGItZTY2My00NDI5LTkzOTktMjMzNzI3NzA0OTY4XCIsXCJ1c2VySWRcIjo1ODIsXCJ0ZW5hbnROYW1lXCI6XCJrYXJ0aGlrQGFnZW50bWF0ZS5pb1wiLFwiaW1hZ2VVcmxcIjpcIlwiLFwidGVuYW50SWRcIjo2MTAsXCJuYW1lXCI6XCJNYXJpVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjpmYWxzZSxcImNoYW5uZWxOYW1lXCI6XCJcIn0iLCJleHAiOjE3NTgwOTIyNjMsImlzcyI6InZmQkRRTmN4SHRTeEZOUFNUd0E1bnFpMTdxMGlDNUwxIn0.2lXWrJBja9Lho24etpUstof69Twq4NRvNhewo5j9fwc
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Sep 2025 05:14:14 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '1100'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '1101'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '11'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: c14a7e028fcb541213c75c7ef19f3147
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "rawProperties": 500,
+                    "offmarketData": [],
+                    "isElasticResponse": false
+                }

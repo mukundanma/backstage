@@ -1,0 +1,647 @@
+openapi: 3.0.0
+info:
+  title: LLM Inference Service
+  version: 1.0.0
+servers:
+  - url: http://{{base-infer-url}}
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+tags:
+  - name: Inference health
+  - name: Inference test router
+  - name: Query cache
+paths:
+  /health:
+    get:
+      tags:
+        - Inference health
+      summary: health
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 28 May 2025 10:15:13 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-request-id:
+              schema:
+                type: string
+                example: efdb0c37-58f6-4a12-9293-94d02bb6f9a1
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '2'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '5'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '57'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: bccad55e9e392a6532b7e50afb4fc020
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                health: ok
+                displayMessage: Services are up
+  /summarize-text:
+    post:
+      tags:
+        - Inference test router
+      summary: summarize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                text: >-
+                  The User Query Consistency Validation task ensures that system
+                  responses remain stable, accurate, and predictable across a
+                  wide range of user inputs. It involves testing multiple user
+                  queries to verify that the API or processing engine returns
+                  outputs that match predefined expectations. Each response is
+                  checked for consistency in structure, key fields, and values.
+                  This helps identify unexpected variations, regressions, or
+                  broken mappings. The task uses a dataset of user queries and
+                  their corresponding expected outputs, typically in JSON
+                  format. By automating this validation in Postman or via
+                  Newman, each query is run and evaluated dynamically. Results
+                  are logged clearly, highlighting mismatches or
+                  inconsistencies. This task is critical for maintaining trust
+                  in user-facing systems, especially in NLP, search, or
+                  recommendation workflows. It also supports scalable QA by
+                  enabling repeated runs with minimal manual effort. Ultimately,
+                  it ensures that query responses remain logically and
+                  structurally consistent over time
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Fri, 27 Jun 2025 06:56:07 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '2509'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '2512'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '64'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: 0c7b750fbdaefd429ae7b16dfe5ff46f
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                summary: >-
+                  The User Query Consistency Validation task ensures that system
+                  responses are stable, accurate, and predictable across various
+                  user inputs by testing multiple queries against predefined
+                  expectations. It checks each response for consistency in
+                  structure, key fields, and values, helping to identify
+                  unexpected variations or regressions. By automating this
+                  process using tools like Postman or Newman, results are logged
+                  to highlight any inconsistencies, which is crucial for
+                  maintaining trust in user-facing systems, particularly in NLP,
+                  search, or recommendation workflows. This approach also
+                  facilitates scalable quality assurance with minimal manual
+                  effort.
+  /retrieve-db:
+    post:
+      tags:
+        - Inference test router
+      summary: retrieve-db
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                question: string
+                top_results: 0
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - _id: 64d...
+                  text: Relevant information from the database
+                  source: internal_document
+  /query-cache/search:
+    post:
+      tags:
+        - Query cache
+      summary: query-cache/search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                query: string
+                top_results: 3
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Sep 2025 05:35:32 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '487'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '498'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '18'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: a0ee1b12bd239147c5fdda1d752a1626
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "query": "string",
+                    "matching_query_text": null,
+                    "matching_query_id": null,
+                    "matching_query_type": null,
+                    "parent_query_id": 0,
+                    "similarity_score": 0.27082183957099915,
+                    "search_results": [
+                        [
+                            {
+                                "query_id": 458840110566595391,
+                                "distance": 0.27082183957099915,
+                                "entity": {
+                                    "query_text": "Properties",
+                                    "query_type": "Structured Data Query",
+                                    "parent_query_id": 0,
+                                    "status": "ACTIVE",
+                                    "query_id": 458840110566595391
+                                }
+                            },
+                            {
+                                "query_id": 458840110588311104,
+                                "distance": 0.270821750164032,
+                                "entity": {
+                                    "query_text": "properties",
+                                    "query_type": "Structured Data Query",
+                                    "parent_query_id": 0,
+                                    "status": "ACTIVE",
+                                    "query_id": 458840110588311104
+                                }
+                            },
+                            {
+                                "query_id": 458840110588310750,
+                                "distance": 0.270821750164032,
+                                "entity": {
+                                    "query_text": "Properties ",
+                                    "query_type": "Structured Data Query",
+                                    "parent_query_id": 0,
+                                    "status": "ACTIVE",
+                                    "query_id": 458840110588310750
+                                }
+                            }
+                        ]
+                    ]
+                }
+  /query-cache/save:
+    post:
+      tags:
+        - Query cache
+      summary: save?question=string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                query: 'Get me all my tasks today '
+                query_type: CRM Query
+                parent_query_id: 0
+                status: ' '
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Sep 2025 05:48:20 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '3030'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '3034'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '12'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: c545ef0adb214d79f2a4755ed2b95563
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "query_id": "460810646578810762",
+                    "query_type": "CRM Query",
+                    "question": "Get me all my tasks today "
+                }

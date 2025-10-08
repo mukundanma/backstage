@@ -1,0 +1,525 @@
+openapi: 3.0.0
+info:
+  title: LLM-Auth
+  version: 1.0.0
+servers:
+  - url: http://{{base-auth-url}}
+paths:
+  /health:
+    get:
+      tags:
+        - default
+      summary: health
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Fri, 30 May 2025 06:28:33 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '4'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '10'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '80'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: 1666f36c7b479f4996694968749c2a54
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                displayMessage: Auth service is up and running
+                internalErrorMessage: ''
+  /authenticate:
+    get:
+      tags:
+        - default
+      summary: authenticate
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Fri, 30 May 2025 06:30:11 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '4'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '9'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '61'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: ff834e5f8dcd8174352b563254028007
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                accountId: '57'
+                userId: '120'
+                emailId: hariprasath.t@purpleslate.in
+                userName: Hari Prasath T 123
+  /user/validate_token:
+    post:
+      tags:
+        - default
+      summary: user/validate_token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJ3YXlpcXN1YnNjcmlwdGlvbi50ZXN0MDYwQHB1cnBsZXNjYXBlLmNvbVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwiYXBwTmFtZVwiOlwiV2F5SVFcIixcImFwcElkXCI6NSxcInRlbmFudElkXCI6ODU5fV0sXCJlbWFpbElkXCI6XCJnb2t1bHJhbS5rQHB1cnBsZXNjYXBlLmNvbVwiLFwibW9iaWxlTm9cIjpcIis5MTk2MjYxMDUxOTZcIixcInNlc3Npb25JZFwiOlwiNTVkNzNhN2YtYTA0Yi00YjZiLWJlYzctOWEyNWIzZTFkYjI3XCIsXCJ1c2VySWRcIjoxMTQ2LFwidGVuYW50TmFtZVwiOlwid2F5aXFzdWJzY3JpcHRpb24udGVzdDA2MEBwdXJwbGVzY2FwZS5jb21cIixcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6ODU5LFwibmFtZVwiOlwiR29rdWxyYW0gS1wiLFwic29jaWFsUmVnXCI6ZmFsc2UsXCJjaGFubmVsTmFtZVwiOlwibW9iaWxlXCJ9IiwiZXhwIjoxNzU4MDk3NDg1LCJpc3MiOiJTYUJFTXBjWG5NV0tCQW1lTDNaZVZ3VTlsTUpSelVEYyJ9.IfIuwkj_L6-s4NTsdeyJEywDxnMLSOvLwLh2Xq_ZUVw
+                userId: '5'
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJ0ZW5hbnROYW1lXCI6XCJiYWxhamkuckBwdXJwbGVzbGF0ZS5pblwiLFwiYXBwTmFtZVwiOlwiS2VhXCIsXCJpbWFnZVVybFwiOlwiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUdObXl4YVh6QWFtbkpBalpObzJjam0zdDFiaFZrNXhkSG16OGNUaTIwSGM9czk2LWNcIixcInRlbmFudElkXCI6MixcIm5hbWVcIjpcIlZpamF5YXJhaGF2YW4gS1wiLFwic29jaWFsUmVnXCI6dHJ1ZSxcImVtYWlsSWRcIjpcInZpamF5YXJhaGF2YW4ua0BwdXJwbGVzbGF0ZS5pblwiLFwidXNlcklkXCI6NX0iLCJleHAiOjE2ODAyMDUxMDEsImlzcyI6IlQxOEhNbVVzZVhDNEJUQ0lzS09WVUhMTGkzRzh3YlhiIn0.y8LioVwyAn7T17Uy6I2Fmp26Kz5wKRfXIcH0nvGX4eY
+                userId: '5'
+  /user/biometric/create:
+    post:
+      tags:
+        - default
+      summary: user/biometric/create
+      requestBody:
+        content: {}
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-token}}'
+        - name: accountId
+          in: header
+          schema:
+            type: integer
+          example: '859'
+        - name: accountid
+          in: header
+          schema:
+            type: string
+        - name: userId
+          in: header
+          schema:
+            type: integer
+          example: '1146'
+        - name: userid
+          in: header
+          schema:
+            type: string
+        - name: emaild
+          in: header
+          schema:
+            type: string
+          example: gokulram.k@purplescape.com
+        - name: emailid
+          in: header
+          schema:
+            type: string
+        - name: userName
+          in: header
+          schema:
+            type: string
+          example: Gokulram K
+        - name: username
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: ''
+  /user/biometric/delete:
+    post:
+      tags:
+        - default
+      summary: user/biometric/delete
+      requestBody:
+        content: {}
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+        - name: accountId
+          in: header
+          schema:
+            type: string
+        - name: accountid
+          in: header
+          schema:
+            type: string
+        - name: userId
+          in: header
+          schema:
+            type: string
+        - name: userid
+          in: header
+          schema:
+            type: string
+        - name: emaild
+          in: header
+          schema:
+            type: string
+        - name: emailid
+          in: header
+          schema:
+            type: string
+        - name: userName
+          in: header
+          schema:
+            type: string
+        - name: username
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: ''
+  /user/biometric/login:
+    post:
+      tags:
+        - default
+      summary: user/biometric/login
+      requestBody:
+        content: {}
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+        - name: accountId
+          in: header
+          schema:
+            type: string
+        - name: accountid
+          in: header
+          schema:
+            type: string
+        - name: userId
+          in: header
+          schema:
+            type: string
+        - name: userid
+          in: header
+          schema:
+            type: string
+        - name: emaild
+          in: header
+          schema:
+            type: string
+        - name: emailid
+          in: header
+          schema:
+            type: string
+        - name: userName
+          in: header
+          schema:
+            type: string
+        - name: username
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: ''
+  /user/create:
+    post:
+      tags:
+        - default
+      summary: user/create
+      requestBody:
+        content: {}
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+        - name: accountId
+          in: header
+          schema:
+            type: integer
+          example: '859'
+        - name: accountid
+          in: header
+          schema:
+            type: string
+        - name: userId
+          in: header
+          schema:
+            type: integer
+          example: '1146'
+        - name: userid
+          in: header
+          schema:
+            type: string
+        - name: emaild
+          in: header
+          schema:
+            type: string
+          example: gokulram.k@purplescape.com
+        - name: emailid
+          in: header
+          schema:
+            type: string
+        - name: userName
+          in: header
+          schema:
+            type: string
+          example: Gokulram K
+        - name: username
+          in: header
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: ''

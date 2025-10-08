@@ -1,0 +1,1100 @@
+openapi: 3.0.0
+info:
+  title: LLM Orchestration Service
+  version: 1.0.0
+servers:
+  - url: http://{{base-url}}
+  - url: http://{{base-infer-url}}
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+tags:
+  - name: Filter
+  - name: Health Check
+  - name: Meeting Minutes
+  - name: Get Query Type
+paths:
+  /health/detailed:
+    get:
+      tags:
+        - Health Check
+      summary: Health?detailed
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Tue, 16 Sep 2025 11:13:09 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '2591'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '2593'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '16'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: 46fe550346a9334320b59e7f1274d65d
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "status": "ok",
+                    "services": [
+                        {
+                            "component_name": "MongoDB",
+                            "status": "healthy",
+                            "message": "MongoDB is healthy",
+                            "details": {},
+                            "response_time_secs": 0.0356
+                        },
+                        {
+                            "component_name": "PostgreSQL",
+                            "status": "healthy",
+                            "message": "PostgreSQL connection is healthy (via pooled async connection)",
+                            "details": {
+                                "connections_num": 30,
+                                "connections_ms": 2874,
+                                "requests_num": 3,
+                                "usage_ms": 30,
+                                "pool_min": 30,
+                                "pool_max": 60,
+                                "pool_size": 30,
+                                "pool_available": 30,
+                                "requests_waiting": 0,
+                                "reconnections": 0,
+                                "last_health_check": 1758021186.918167
+                            },
+                            "response_time_secs": 0.0133
+                        },
+                        {
+                            "component_name": "OpenAI",
+                            "status": "healthy",
+                            "message": "OpenAI client responded",
+                            "details": {},
+                            "response_time_secs": 1.1565
+                        },
+                        {
+                            "component_name": "Azure OpenAI",
+                            "status": "healthy",
+                            "message": "Azure OpenAI responded",
+                            "details": {
+                                "status_code": 200
+                            },
+                            "response_time_secs": 1.2506
+                        },
+                        {
+                            "component_name": "Dragonfly",
+                            "status": "healthy",
+                            "message": "Dragonfly responded to ping",
+                            "details": {},
+                            "response_time_secs": 0.002
+                        }
+                    ]
+                }
+  /extract-filters:
+    post:
+      tags:
+        - Filter
+      summary: extract-filter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                userQuery: >-
+                  Can you show me 2-bedroom apartments (60–80 sqm) in Newtown,
+                  Leichhardt, or Balmain with a rental yield above 5%, capital
+                  growth over 10% in 5 years, low crime rate, and within 800
+                  meters of public transport and highly-rated public schools?
+                id: 0
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Tue, 20 May 2025 09:10:13 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '9235'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '9240'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '88'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: 41933710bef7f2532f318e4783ceba22
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permission-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                filters:
+                  action_filters:
+                    action_filters:
+                      - create_collection
+                  domain_filters:
+                    min_bedrooms: 2
+                    max_bedrooms: 2
+                    min_bathrooms: 2
+                    max_bathrooms: 2
+                    listing_type: Sale
+                    property_types:
+                      - ApartmentUnitFlat
+                  htag_filters:
+                    suburb:
+                      - Newtown
+  /llm-orchestration-agents:
+    post:
+      tags:
+        - Filter
+      summary: '{{base-url}}/llm-orchestration-agents'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                entities: []
+                indexName: wayiqb2f1c21b96f14fbfab7224a2aefd87
+                spellCheck:
+                  spellChanged: false
+                  updatedText: ''
+                  actualText: ''
+                metaData:
+                  filters: []
+                  choices: []
+                  bucketSize: 0
+                  requestType: ''
+                  entities: []
+                  ignoreNLU: false
+                  pageNumberChange: false
+                  pageNumber: 1
+                  pageSize: 30
+                  freeText: false
+                  queryCategory: ''
+                  isWakeWord: false
+                  timezone: Asia/Calcutta
+                  searchQuery: >-
+                    Create a reminder to discuss collaboration opportunities
+                    with @sachin by tomorrow
+                utterance: >-
+                  Create a reminder to discuss collaboration opportunities with
+                  @sachin by tomorrow
+                user:
+                  userAppId: >-
+                    fc12205d-0f50-4a62-a2df-4c0abb6f62ca||wayiqb2f1c21b96f14fbfab7224a2aefd87||120
+                  userId: '{{user_id}}'
+                  name: '{{user_name}}'
+                  accountId: '57'
+                  channelId: wayIQWeb
+                  authToken: '{{auth-token}}'
+                  trackId: ''
+                  requestId: ''
+                  parentId: ''
+                  email: '{{user_email}}'
+                  locationId: RJfqOmRlWQzMcUBhkYC6
+                clientDetails: []
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                response:
+                  resp:
+                    totalCount: 27
+                    voiceDescription: >-
+                      Sure. Here are the properties that match your search
+                      criteria. I've found 27 properties in Greater Brisbane
+                      available for sale. The listings include 25 houses and 2
+                      new house land packages, all featuring a minimum of 4
+                      bedrooms and 2 bathrooms. These properties offer between 1
+                      to 8 car spaces and have building areas ranging from 116
+                      to 600 square meters. The price range for the new house
+                      land packages is between $690,000 and $760,000, while no
+                      specific price range is provided for the houses under one
+                      million dollars.
+                    detailsData:
+                      - wq_row_id: 2019977631
+                        propertytype: House
+                        state: QLD
+                        bathrooms: 2
+                        bedrooms: 4
+                        carspaces: 1
+                        streetnumber: '59'
+                        street: Fitzpatrick Circuit
+                        area: Ipswich Region
+                        suburb: AUGUSTINE HEIGHTS
+                        postcode: '4300'
+                        landareasqm: 303
+                        region: South East Queensland Greater Region
+                        latitude: -27.6522884
+                        longitude: 152.886185
+                        address: 59 Fitzpatrick Circuit, Augustine Heights
+                        postedon: '2025-05-07T16:53:52'
+                        inspecton: ''
+                        propertyimages: >-
+                          https://bucket-api.domain.com.au/v1/bucket/image/2019977631_1_1_250507_065352-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_2_1_250507_065352-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_3_1_250507_065352-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_4_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_5_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_6_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_7_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_8_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_9_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_10_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_11_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_12_1_250507_065407-w1920-h1441,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_13_1_250507_065407-w1920-h1440,https://bucket-api.domain.com.au/v1/bucket/image/2019977631_14_1_250508_044104-w2038-h1441
+                        sellerAgentDetails:
+                          type: Agency
+                          id: 29149
+                          name: Ray White Brookwater and Greater Springfield
+                          logoUrl: >-
+                            https://images.domain.com.au/img/Agencys/29149/logo_29149.jpg?date=133646295048510986
+                          preferredColourHex: '#FEE536'
+                          bannerUrl: >-
+                            https://images.domain.com.au/img/Agencys/29149/banner_29149.jpg?date=132827878526705308
+                          contacts:
+                            - name: Angela Browne
+                              photoUrl: >-
+                                https://images.domain.com.au/img/29149/contact_1381262.jpeg?mod=250520-143320
+                            - name: Sarah Sarmiento
+                              photoUrl: >-
+                                https://images.domain.com.au/img/29149/contact_1948403.png?mod=250520-143320
+                        propertyDescription: >-
+                          <b></b>
+
+                          Nestled within the family-friendly enclave of The
+                          Springs in ever-popular Augustine Heights, this
+                          beautifully maintained home offers low-maintenance
+                          living with all the modern comforts - a perfect entry
+                          point for first home buyers or a sav...
+                    searchQuery: >-
+                      D My client John is looking for an investment property
+                      within 40 kilometer radius from Brisbane City. Four
+                      bedroom, 2 bathroom, over 5% rental yield and 10% capital
+                      growth and a budget of $1,000,000. Show me what options I
+                      can present to him
+                    appliedFilters:
+                      filters:
+                        bedrooms: 4
+                        bathrooms: 2
+                        price: < 1000000
+                        surrounding_radius_in_meters: 40000
+                        listing_type: Sale
+                        greater_capital_city_region: Greater Brisbane
+                        capital_growth: high
+                      strategyFilter: {}
+                    filters:
+                      action_filters:
+                        action_filters:
+                          - create_collection
+                      domain_filters:
+                        min_bedrooms: 4
+                        max_bedrooms: 4
+                        min_bathrooms: 2
+                        max_bathrooms: 2
+                        max_price: 1000000
+                        surrounding_radius_in_meters: 40000
+                        property_types: null
+                        listing_type: Sale
+                      htag_filters:
+                        greater_capital_city_region: Greater Brisbane
+                        capital_growth: high
+  /health:
+    get:
+      tags:
+        - Health Check
+      summary: Health
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Tue, 16 Sep 2025 11:13:20 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '11'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '14'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '23'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: 9b5f044b7d54b23a7e1c0243dcfaf736
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "internalErrorMessage": "",
+                    "displayMessage": "Everything is good"
+                }
+  /extract-mom:
+    post:
+      tags:
+        - Meeting Minutes
+      summary: >-
+        https://api-wayiq.qa.purplescape.com/api/v1/wsc-wayiq-llm-orchestration/extract-mom
+        Copy
+      description: "Generated from cURL: curl --location 'https://api-wayiq.qa.purplescape.com/api/v1/wsc-wayiq-llm-orchestration/extract-mom' \\\n\r\n--header 'auth-token: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJ7XCJhcHBOYW1lXCI6XCJXYXlJUVwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50TGlzdFwiOlt7XCJ0ZW5hbnROYW1lXCI6XCJzYXJhdmFuYW4ubUBwdXJwbGVzbGF0ZS5pblwiLFwiaXNUZW5hbnRPd25lclwiOmZhbHNlLFwidGVuYW50SWRcIjo0fV0sXCJlbWFpbElkXCI6XCJtYXJpdmlnbmVzaC5yQHB1cnBsZXNsYXRlLmluXCIsXCJnaGxcIjp7XCJjb21wYW55SWRcIjpcIlJwazVPeTNycUs4TFRUb2hScktiXCIsXCJyb2xlXCI6XCJhY2NvdW50IHVzZXJcIixcImxvY2F0aW9uSWRcIjpcIlJKZnFPbVJsV1F6TWNVQmhrWUM2XCIsXCJ1c2VySWRcIjpcIldXYXJvWkhMOXp4b291ZGQxMzA4XCJ9LFwibW9iaWxlTm9cIjpcIis5MTYzNzk4MzE2MzBcIixcInVzZXJJZFwiOjMxLFwidGVuYW50TmFtZVwiOlwic2FyYXZhbmFuLm1AcHVycGxlc2xhdGUuaW5cIixcImltYWdlVXJsXCI6XCJcIixcInRlbmFudElkXCI6NCxcIm5hbWVcIjpcIk1hcmkgVmlnbmVzaCBSXCIsXCJzb2NpYWxSZWdcIjp0cnVlLFwiY2hhbm5lbE5hbWVcIjpcIlwifSIsImV4cCI6MTc2NjQwNzMwOCwiaXNzIjoiZTlNQmhJZ1p2OTJ3ZzlublZaWVZmRWVEYVY5dXNtZVYifQ.iZeFRgxNqDjrulnxWcEWM6FzHWvYEh8eIYKahriTDDs' \\\n\r\n--form 'file=@\"/C:/Users/User/Downloads/ce08eb3a-727d-4366-b05f-e54210db8bc8_dscSyhYP3nq4yX2utke9VG.wav\"' \\\n\r\n--form 'audioId=\"qwert1235\"'\n "
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                audioId:
+                  type: string
+                  example: qwert1235
+      parameters:
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Tue, 16 Sep 2025 11:14:28 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '168'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '170'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '9'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: 97f95122d57d47159cea2d4e76a3d742
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "status": "success",
+                    "error_description": "",
+                    "data": {
+                        "participants": [
+                            "Alex"
+                        ],
+                        "key_discussions": [
+                            "Alex is not willing to buy the property because the process is too lengthy."
+                        ],
+                        "decisions": [],
+                        "action_items": [],
+                        "sentiment": "Neutral",
+                        "transcript": "Today I had a discussion with Alex and he is not willing to buy the property because it is too long to buy."
+                    }
+                }
+  /get-query-type:
+    get:
+      tags:
+        - Get Query Type
+      summary: get-query-type
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+        - name: question
+          in: query
+          schema:
+            type: string
+          example: What is the vacancy rate, and how does it affect rental demand?
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Fri, 30 May 2025 04:22:42 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-request-id:
+              schema:
+                type: string
+                example: 42060930-c612-4f68-907d-2d1bc570819c
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '1457'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '1463'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '38'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: 154fc32fd2ac9471f711b0467d11fd0f
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                question: >-
+                  What is the vacancy rate, and how does it affect rental
+                  demand?
+                query_type: Unstructured Data Query
+  /strategy-questions:
+    post:
+      tags:
+        - Get Query Type
+      summary: strategy-questions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                contactId: string
+                locationId: string
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+        - name: user-id
+          in: header
+          schema:
+            type: integer
+          example: '228'
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - >-
+                  What are the key strategic goals for this contact in this
+                  location?
+  /inference:
+    get:
+      tags:
+        - Get Query Type
+      summary: inference
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: auth-token
+          in: header
+          schema:
+            type: string
+          example: '{{auth-dev-token}}'
+        - name: question
+          in: query
+          schema:
+            type: string
+          example: >-
+            What is the application fee for an estate agent's licence in
+            Victoria?
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Fri, 30 May 2025 04:36:47 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-request-id:
+              schema:
+                type: string
+                example: 8547d29e-fce1-4c84-9f4d-10ccac35c0ff
+            x-envoy-upstream-service-time:
+              schema:
+                type: integer
+                example: '5849'
+            vary:
+              schema:
+                type: string
+                example: Origin
+            Access-Control-Allow-Credentials:
+              schema:
+                type: boolean
+                example: 'true'
+            X-Kong-Upstream-Latency:
+              schema:
+                type: integer
+                example: '5853'
+            X-Kong-Proxy-Latency:
+              schema:
+                type: integer
+                example: '83'
+            Via:
+              schema:
+                type: number
+                example: kong/3.7.1
+            X-Kong-Request-Id:
+              schema:
+                type: string
+                example: c1995671775b4054e4b8fd6dd0bd4758
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: object-src 'none'; form-action 'self'; frame-ancestors 'self';
+            Permissions-Policy:
+              schema:
+                type: string
+                example: >-
+                  accelerometer=(), ambient-light-sensor=(), autoplay=(),
+                  battery=(), camera=(), cross-origin-isolated=(),
+                  display-capture=(), document-domain=(), encrypted-media=(),
+                  execution-while-not-rendered=(),
+                  execution-while-out-of-viewport=(), fullscreen=(),
+                  geolocation=(), gyroscope=(),hid=(), idle-detection=(),
+                  magnetometer=(), microphone=(), midi=(),
+                  navigation-override=(), payment=(), picture-in-picture=(),
+                  publickey-credentials-get=(), screen-wake-lock=(), serial=(),
+                  usb=(), web-share=(), xr-spatial-tracking=()
+            Content-Encoding:
+              schema:
+                type: string
+                example: br
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                question: >-
+                  What is the vacancy rate, and how does it affect rental
+                  demand?
+                answer: >-
+                  The **vacancy rate** is a key metric in the real estate
+                  market, representing the percentage of rental properties that
+                  are unoccupied at a given time. It is calculated by dividing
+                  the number of vacant rental units by the total number of
+                  rental units available, then multiplying by 100 to get a
+                  percentage. 
+
+
+                  **Impact on Rental Demand:**
+
+                  1. **High Vacancy Rate**: 
+                     - Indicates an oversupply of rental properties.
+                     - Can lead to **lower rental prices** as landlords compete to attract tenants.
+                     - May result in **increased incentives** for tenants, such as reduced deposits or rent-free periods.
+
+                  2. **Low Vacancy Rate**: 
+                     - Suggests a strong demand for rental properties.
+                     - Landlords may raise rental prices due to competition among prospective tenants.
+                     - Can lead to **fewer concessions** offered to tenants, as properties are more likely to be filled quickly.
+
+                  3. **Market Dynamics**: 
+                     - The vacancy rate can fluctuate based on various factors, including economic conditions, employment rates, and seasonal trends.
+                     - A **stable or declining vacancy rate** often signals a healthy rental market, encouraging new investments in rental properties.
+
+                  Understanding the vacancy rate is crucial for both landlords
+                  and tenants, as it directly influences rental pricing,
+                  availability, and overall market health.
+                similarity_score: 0.47202465931574505
+                source_urls:
+                  - >-
+                    https://www.sa.gov.au/topics/housing/renting-and-letting/renting-privately/start-of-tenancy/Choosing-a-tenant
+                  - >-
+                    https://www.fairtrading.nsw.gov.au/housing-and-property/property-professionals/working-as-a-property-agent/rules-of-conduct
