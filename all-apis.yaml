@@ -1,8 +1,8 @@
-apiVersion: backstage.io/v1alpha1
+apiVersion: studentopro/v1alpha1
 kind: Location
 metadata:
-  name: example-apis
-  description: A collection of all Backstage example APIs
+  name: realestate-apis
+  description: A collection of all studentopro APIs
 spec:
   targets:
     - ./apis/arifact-openapi.yaml
